@@ -3,3315 +3,1202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Niche Academy | Sales Team Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Urban Niche Academy - Assessment Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           URBAN NICHE ACADEMY — DESIGN SYSTEM
-           Brand-matched to urbannicheco.com
-           ============================================ */
-
-        :root {
-            /* Brand Colors */
-            --orange-primary: #E05C1A;
-            --orange-cta: #E8572A;
-            --orange-hover: #FF6B2B;
-            --orange-light: rgba(224, 92, 26, 0.15);
-            --orange-glow: rgba(224, 92, 26, 0.3);
-
-            /* Neutrals */
-            --dark-bg: #0A0A0A;
-            --dark-surface: #111111;
-            --dark-card: #1A1A1A;
-            --dark-border: #2A2A2A;
-            --dark-hover: #222222;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A0A0A0;
-            --text-muted: #666666;
-            --white: #FFFFFF;
-
-            /* Status Colors */
-            --green-success: #22C55E;
-            --green-light: rgba(34, 197, 94, 0.15);
-            --blue-info: #3B82F6;
-            --blue-light: rgba(59, 130, 246, 0.15);
-            --yellow-warn: #EAB308;
-            --yellow-light: rgba(234, 179, 8, 0.15);
-            --red-danger: #EF4444;
-            --red-light: rgba(239, 68, 68, 0.15);
-
-            /* Typography */
-            --font-heading: 'DM Sans', Helvetica, Arial, sans-serif;
-            --font-body: 'Open Sans', sans-serif;
-
-            /* Spacing */
-            --radius-sm: 4px;
-            --radius-md: 6px;
-            --radius-lg: 12px;
-            --radius-xl: 20px;
-            --radius-full: 9999px;
-
-            /* Sidebar */
-            --sidebar-width: 260px;
-            --sidebar-collapsed: 70px;
-        }
-
-        /* ============================================
-           RESET & BASE
-           ============================================ */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-            font-family: var(--font-body);
-            background: var(--dark-bg);
+        :root {
+            --orange-primary: #E05C1A;
+            --orange-cta: #E8572A;
+            --orange-hover: #FF6B2B;
+            --dark-bg: #0A0A0A;
+            --dark-surface: #111111;
+            --dark-card: #1A1A1A;
+            --dark-border: #2A2A2A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --status-green: #22C55E;
+            --status-blue: #3B82F6;
+            --status-yellow: #EAB308;
+            --status-red: #EF4444;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--dark-bg);
             color: var(--text-primary);
-            overflow: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-        }
-
-        a {
-            color: var(--orange-primary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        a:hover { color: var(--orange-hover); }
-
-        /* ============================================
-           APP LAYOUT
-           ============================================ */
-        .app-container {
-            display: flex;
-            height: 100vh;
-            width: 100vw;
-        }
-
-        /* ============================================
-           SIDEBAR NAVIGATION
-           ============================================ */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--dark-surface);
-            border-right: 1px solid var(--dark-border);
-            display: flex;
-            flex-direction: column;
-            transition: width 0.3s ease;
-            z-index: 100;
-            flex-shrink: 0;
-        }
-
-        .sidebar-header {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            border-bottom: 1px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
-        .sidebar-logo {
-            width: 36px;
-            height: 36px;
-            background: var(--orange-primary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-
-        .sidebar-brand {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .sidebar-brand-name {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--white);
-            white-space: nowrap;
-        }
-
-        .sidebar-brand-sub {
-            font-size: 11px;
-            color: var(--text-muted);
-            white-space: nowrap;
-        }
-
-        .sidebar-nav {
-            flex: 1;
-            padding: 16px 12px;
-            overflow-y: auto;
-        }
-
-        .nav-section-label {
-            font-size: 10px;
+        .demo-banner {
+            background-color: var(--status-yellow);
+            color: #000;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border-radius: 8px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--text-muted);
-            padding: 8px 12px 6px;
-            margin-top: 12px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-secondary);
             font-size: 14px;
-            font-weight: 500;
-            user-select: none;
+            text-align: center;
+            display: none;
         }
 
-        .nav-item:hover {
-            background: var(--dark-hover);
-            color: var(--text-primary);
+        .demo-banner.show {
+            display: block;
         }
 
-        .nav-item.active {
-            background: var(--orange-light);
-            color: var(--orange-primary);
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
         }
 
-        .nav-item.active .nav-icon {
-            color: var(--orange-primary);
-        }
-
-        .nav-icon {
-            width: 20px;
-            height: 20px;
+        .logo {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .nav-badge {
-            margin-left: auto;
-            background: var(--orange-primary);
-            color: var(--white);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: var(--radius-full);
-        }
-
-        .sidebar-footer {
-            padding: 16px 20px;
-            border-top: 1px solid var(--dark-border);
-        }
-
-        .user-card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: var(--radius-full);
-            background: var(--dark-card);
-            border: 2px solid var(--orange-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--orange-primary);
-            flex-shrink: 0;
-        }
-
-        .user-info {
-            overflow: hidden;
-        }
-
-        .user-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--white);
-            white-space: nowrap;
-        }
-
-        .user-role {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           MAIN CONTENT AREA
-           ============================================ */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            height: 60px;
-            background: var(--dark-surface);
-            border-bottom: 1px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 28px;
-            flex-shrink: 0;
-        }
-
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .page-title {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .breadcrumb span {
-            color: var(--text-secondary);
-        }
-
-        .top-bar-right {
-            display: flex;
-            align-items: center;
             gap: 12px;
         }
 
-        .top-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-md);
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 16px;
+        .logo-icon {
+            font-size: 40px;
         }
 
-        .top-btn:hover {
-            background: var(--dark-hover);
-            color: var(--white);
-            border-color: var(--orange-primary);
-        }
-
-        /* Page Container */
-        .page-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 28px;
-        }
-
-        .page {
+        .step {
             display: none;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
-        .page.active {
+        .step.active {
             display: block;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* ============================================
-           CARDS & COMPONENTS
-           ============================================ */
-        .card {
-            background: var(--dark-surface);
+        /* Step 1: Welcome */
+        .welcome-content {
+            text-align: center;
+        }
+
+        .welcome-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .overview-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .overview-card {
+            background-color: var(--dark-card);
             border: 1px solid var(--dark-border);
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
             padding: 24px;
-            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
+        .overview-card:hover {
+            border-color: var(--orange-primary);
+            background-color: rgba(224, 92, 26, 0.05);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
         }
 
         .card-title {
-            font-family: var(--font-heading);
-            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 600;
-        }
-
-        /* Stat Cards */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: var(--dark-surface);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            transition: border-color 0.2s;
-        }
-
-        .stat-card:hover {
-            border-color: var(--orange-primary);
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
+            font-size: 16px;
             margin-bottom: 8px;
         }
 
-        .stat-value {
-            font-family: var(--font-heading);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--white);
+        .card-info {
+            font-size: 13px;
+            color: var(--text-secondary);
         }
 
-        .stat-change {
-            font-size: 12px;
-            margin-top: 6px;
+        /* Step 2 & 4: Questions */
+        .assessment-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 4px;
-        }
-
-        .stat-change.up { color: var(--green-success); }
-        .stat-change.down { color: var(--red-danger); }
-
-        /* Status Badges */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            border-radius: var(--radius-full);
-            font-size: 12px;
-            font-weight: 600;
-            gap: 5px;
-        }
-
-        .badge-orange { background: var(--orange-light); color: var(--orange-primary); }
-        .badge-green { background: var(--green-light); color: var(--green-success); }
-        .badge-blue { background: var(--blue-light); color: var(--blue-info); }
-        .badge-yellow { background: var(--yellow-light); color: var(--yellow-warn); }
-        .badge-red { background: var(--red-light); color: var(--red-danger); }
-
-        /* Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            gap: 8px;
             margin-bottom: 24px;
-            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .filter-tab {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: var(--radius-full);
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            color: var(--text-secondary);
-            font-size: 13px;
+        .assessment-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .timer {
+            background-color: var(--dark-card);
+            border: 2px solid var(--orange-primary);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-family: 'DM Sans', sans-serif;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            font-size: 18px;
+            min-width: 100px;
+            text-align: center;
         }
 
-        .filter-tab:hover {
-            background: var(--dark-hover);
-            border-color: var(--orange-primary);
-            color: var(--white);
+        .timer.warning {
+            border-color: var(--status-red);
+            color: var(--status-red);
+            animation: pulse 1s infinite;
         }
 
-        .filter-tab.active {
-            background: var(--orange-primary);
-            border-color: var(--orange-primary);
-            color: var(--white);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
-        .filter-tab-count {
-            font-size: 11px;
-            opacity: 0.8;
+        .timer-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: block;
+            margin-top: 4px;
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            font-family: var(--font-body);
+        .untimed {
+            color: var(--status-green);
             font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
         }
 
-        .btn-primary {
-            background: var(--orange-cta);
-            color: var(--white);
-        }
-        .btn-primary:hover {
-            background: var(--orange-hover);
-            box-shadow: 0 4px 20px var(--orange-glow);
+        .progress-container {
+            margin-bottom: 32px;
         }
 
-        .btn-secondary {
-            background: transparent;
+        .progress-label {
+            font-size: 13px;
             color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: var(--dark-card);
+            border-radius: 3px;
+            overflow: hidden;
             border: 1px solid var(--dark-border);
         }
-        .btn-secondary:hover {
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-cta), var(--orange-hover));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background-color: var(--dark-card);
+            border: 2px solid var(--dark-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            background-color: rgba(224, 92, 26, 0.1);
             border-color: var(--orange-primary);
-            color: var(--white);
         }
 
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 13px;
+        .option input[type="radio"] {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--orange-primary);
         }
 
-        .btn:disabled {
+        .option.selected {
+            border-color: var(--orange-primary);
+            background-color: rgba(224, 92, 26, 0.15);
+        }
+
+        .option-label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .button-primary {
+            background-color: var(--orange-primary);
+            color: white;
+            flex: 1;
+        }
+
+        .button-primary:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .button-primary:active {
+            transform: scale(0.98);
+        }
+
+        .button-secondary {
+            background-color: var(--dark-card);
+            color: var(--text-primary);
+            border: 1px solid var(--dark-border);
+            flex: 1;
+        }
+
+        .button-secondary:hover {
+            border-color: var(--text-secondary);
+            background-color: rgba(160, 160, 160, 0.1);
+        }
+
+        .button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
-        /* Progress Bar */
-        .progress-bar-container {
-            width: 100%;
-            height: 8px;
-            background: var(--dark-card);
-            border-radius: var(--radius-full);
-            overflow: hidden;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--orange-primary), var(--orange-hover));
-            border-radius: var(--radius-full);
-            transition: width 0.6s ease;
-        }
-
-        /* Pipeline Steps */
-        .pipeline {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            margin: 24px 0;
-        }
-
-        .pipeline-step {
-            flex: 1;
+        /* Step 3: Transition */
+        .transition-content {
             text-align: center;
-            position: relative;
+            padding: 40px 20px;
         }
 
-        .pipeline-dot {
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-full);
-            background: var(--dark-card);
-            border: 2px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 8px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .pipeline-step.completed .pipeline-dot {
-            background: var(--green-success);
-            border-color: var(--green-success);
-            color: var(--white);
-        }
-
-        .pipeline-step.current .pipeline-dot {
-            background: var(--orange-primary);
-            border-color: var(--orange-primary);
-            color: var(--white);
-            box-shadow: 0 0 20px var(--orange-glow);
-        }
-
-        .pipeline-step.pending .pipeline-dot {
-            color: var(--text-muted);
-        }
-
-        .pipeline-label {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        .pipeline-step.completed .pipeline-label { color: var(--green-success); }
-        .pipeline-step.current .pipeline-label { color: var(--orange-primary); }
-
-        .pipeline-line {
-            flex: 0.5;
-            height: 2px;
-            background: var(--dark-border);
-            margin-bottom: 20px;
-        }
-
-        .pipeline-line.completed {
-            background: var(--green-success);
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table th {
-            text-align: left;
-            padding: 12px 16px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        table td {
-            padding: 14px 16px;
-            font-size: 14px;
-            border-bottom: 1px solid var(--dark-border);
-            color: var(--text-secondary);
-        }
-
-        table tr:hover td {
-            background: var(--dark-hover);
-        }
-
-        .candidate-name {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .candidate-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: var(--radius-full);
-            background: var(--orange-light);
-            color: var(--orange-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* Module Cards (Training) */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .module-card {
-            background: var(--dark-surface);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .module-card:hover {
-            border-color: var(--orange-primary);
-            transform: translateY(-2px);
-        }
-
-        .module-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-md);
-            background: var(--orange-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 14px;
-        }
-
-        .module-title {
-            font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .module-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 14px;
-        }
-
-        .module-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .empty-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        .empty-title {
-            font-family: var(--font-heading);
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-        }
-
-        .empty-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            max-width: 400px;
-            margin: 0 auto 20px;
-        }
-
-        /* Welcome Banner */
-        .welcome-banner {
-            background: linear-gradient(135deg, var(--dark-surface) 0%, rgba(224, 92, 26, 0.08) 100%);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
+        .checkmark {
+            font-size: 64px;
             margin-bottom: 24px;
-            position: relative;
-            overflow: hidden;
+            display: inline-block;
+            animation: scaleIn 0.5s ease-out;
         }
 
-        .welcome-banner::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
-            pointer-events: none;
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        .welcome-banner h2 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .welcome-banner p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            max-width: 600px;
-        }
-
-        /* Assessment Section */
-        .assessment-card {
-            border-left: 3px solid var(--orange-primary);
-        }
-
-        .question-block {
-            background: var(--dark-card);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-
-        .question-number {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--orange-primary);
-            margin-bottom: 8px;
-        }
-
-        .question-text {
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .option-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .option-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: var(--dark-surface);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-        }
-
-        .option-item:hover {
-            border-color: var(--orange-primary);
-            background: var(--orange-light);
-        }
-
-        .option-item.selected {
-            border-color: var(--orange-primary);
-            background: var(--orange-light);
-            color: var(--orange-primary);
-            font-weight: 600;
-        }
-
-        .option-radio {
-            width: 18px;
-            height: 18px;
-            border-radius: var(--radius-full);
-            border: 2px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s;
-        }
-
-        .option-item.selected .option-radio {
-            border-color: var(--orange-primary);
-            background: var(--orange-primary);
-        }
-
-        .option-item.selected .option-radio::after {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--white);
-            border-radius: var(--radius-full);
-        }
-
-        /* Score Display */
-        .score-ring {
-            width: 120px;
-            height: 120px;
-            border-radius: var(--radius-full);
-            background: conic-gradient(var(--orange-primary) var(--score-pct, 0%), var(--dark-card) var(--score-pct, 0%));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .score-ring-inner {
-            width: 96px;
-            height: 96px;
-            border-radius: var(--radius-full);
-            background: var(--dark-surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .score-value {
-            font-family: var(--font-heading);
+        .transition-title {
+            font-family: 'DM Sans', sans-serif;
             font-size: 28px;
             font-weight: 700;
-            color: var(--orange-primary);
-        }
-
-        .score-label {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* Results Page Specific */
-        .results-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .results-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .results-status {
-            font-family: var(--font-heading);
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .results-status.passed {
-            color: var(--green-success);
-        }
-
-        .results-status.failed {
-            color: var(--red-danger);
-        }
-
-        .results-message {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .results-scores {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .results-detail {
-            margin-bottom: 32px;
-        }
-
-        .results-detail-title {
-            font-family: var(--font-heading);
-            font-size: 16px;
-            font-weight: 600;
             margin-bottom: 16px;
         }
 
-        .results-question {
-            background: var(--dark-card);
-            border-left: 3px solid var(--dark-border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            margin-bottom: 12px;
+        .transition-message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
         }
 
-        .results-question.correct {
-            border-left-color: var(--green-success);
+        .part-overview {
+            background-color: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
         }
 
-        .results-question.incorrect {
-            border-left-color: var(--red-danger);
-        }
-
-        .results-question-text {
-            font-size: 14px;
+        .part-overview-title {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
             margin-bottom: 8px;
         }
 
-        .results-question-answer {
-            font-size: 13px;
+        .part-overview-desc {
+            font-size: 14px;
             color: var(--text-secondary);
         }
 
-        .results-question-label {
-            font-size: 11px;
+        /* Step 5: Completion */
+        .completion-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .completion-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            display: inline-block;
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        .completion-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .completion-name {
+            color: var(--orange-primary);
+        }
+
+        .completion-message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            background-color: var(--dark-card);
+            border-left: 4px solid var(--orange-primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .next-steps-title {
+            font-family: 'DM Sans', sans-serif;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
 
-        .results-question-label.correct {
-            color: var(--green-success);
+        .next-steps-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .results-question-label.incorrect {
-            color: var(--red-danger);
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--dark-border);
+            margin-top: 40px;
         }
 
-        .results-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
+        .footer-logo {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        /* Candidate Modal */
-        .candidate-modal {
-            position: fixed;
-            top: 0;
-            right: -500px;
-            width: 480px;
-            height: 100vh;
-            background: var(--dark-surface);
-            border-left: 1px solid var(--dark-border);
-            z-index: 1000;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-            padding: 28px;
-        }
-
-        .candidate-modal.open {
-            right: 0;
-        }
-
-        .modal-overlay {
+        .modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 999;
-            display: none;
-        }
-
-        .modal-overlay.open {
-            display: block;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 32px;
-            height: 32px;
-            border-radius: var(--radius-md);
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            color: var(--text-secondary);
-            display: flex;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 18px;
         }
 
-        .modal-close:hover {
-            background: var(--dark-hover);
-            color: var(--white);
-            border-color: var(--orange-primary);
+        .modal.active {
+            display: flex;
         }
 
-        .modal-header {
-            margin-bottom: 24px;
+        .modal-content {
+            background-color: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            text-align: center;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .modal-title {
-            font-size: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--white);
-            margin-bottom: 4px;
-        }
-
-        .modal-subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .modal-section {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--dark-border);
-        }
-
-        .modal-section:last-child {
-            border-bottom: none;
-        }
-
-        .modal-section-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .modal-field {
-            margin-bottom: 12px;
-        }
-
-        .modal-field-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .modal-field-value {
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        .modal-field-value a {
-            color: var(--orange-primary);
-        }
-
-        .modal-notes-textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-md);
-            background: var(--dark-card);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 14px;
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .modal-notes-textarea:focus {
-            outline: none;
-            border-color: var(--orange-primary);
-        }
-
-        .modal-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .modal-action-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        /* Setup Guide */
-        .setup-step {
-            background: var(--dark-surface);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-bottom: 20px;
-        }
-
-        .setup-step-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-full);
-            background: var(--orange-light);
-            color: var(--orange-primary);
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 12px;
-        }
-
-        .setup-step-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-
-        .setup-step-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
             margin-bottom: 16px;
+        }
+
+        .modal-message {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
             line-height: 1.5;
         }
 
-        .setup-checklist {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .setup-checklist li {
+        .modal-buttons {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--text-secondary);
+            gap: 12px;
         }
 
-        .setup-checklist li:before {
-            content: '☐';
-            flex-shrink: 0;
-            color: var(--text-muted);
-            font-size: 16px;
+        .modal-buttons .button {
+            flex: 1;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .sidebar {
-                position: fixed;
-                left: -280px;
-                height: 100%;
-                transition: left 0.3s ease;
-                z-index: 200;
+            .container {
+                padding: 16px;
             }
-            .sidebar.open { left: 0; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .pipeline { flex-wrap: wrap; gap: 4px; }
-            .pipeline-line { display: none; }
-            .pipeline-step { flex: 0 0 auto; }
-            .modules-grid { grid-template-columns: 1fr; }
-            .results-scores { grid-template-columns: 1fr; }
-            .candidate-modal {
-                width: 100%;
-                right: -100%;
+
+            .logo {
+                font-size: 28px;
             }
-            .page-container { padding: 16px; }
-            .top-bar { padding: 0 16px; }
-            .welcome-banner { padding: 20px; }
-            .welcome-banner h2 { font-size: 20px; }
-            .card { padding: 16px; }
-            table { font-size: 13px; }
-            table th, table td { padding: 10px 8px; }
-            .table-container { margin: 0 -16px; padding: 0 16px; }
-            .filter-tabs { flex-wrap: wrap; gap: 6px; }
-            .btn { padding: 8px 14px; font-size: 13px; }
 
-            /* Module viewer mobile */
-            .module-viewer { flex-direction: column; height: auto; margin: -16px; }
-            .lesson-sidebar { width: 100%; max-height: 200px; border-right: none; border-bottom: 1px solid var(--dark-border); }
-            .lesson-content { padding: 20px 16px; }
-            .lesson-nav { flex-direction: column; gap: 8px; }
-            .lesson-nav .btn { width: 100%; justify-content: center; }
-            .video-placeholder { aspect-ratio: 16/10; }
+            .assessment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
 
-            /* Setup guide mobile */
-            .setup-step { padding: 16px; }
+            .assessment-title {
+                font-size: 20px;
+            }
 
-            /* Score rings smaller on mobile */
-            .score-ring { width: 90px; height: 90px; }
-            .score-ring-inner { width: 72px; height: 72px; }
-            .score-value { font-size: 22px; }
+            .timer {
+                align-self: flex-start;
+                min-width: 80px;
+                font-size: 16px;
+            }
 
-            /* Email preview */
-            .email-preview-box { font-size: 12px; padding: 12px; }
+            .overview-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-title {
+                font-size: 24px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+
+            .navigation {
+                flex-wrap: wrap;
+            }
         }
 
-        /* Small phone screens */
         @media (max-width: 480px) {
-            .stat-card { padding: 14px; }
-            .stat-value { font-size: 22px; }
-            .page-title { font-size: 16px; }
-            .top-bar { height: 50px; }
-            .candidate-name { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .candidate-avatar { width: 28px; height: 28px; font-size: 10px; }
-        }
+            .container {
+                padding: 12px;
+            }
 
-        /* ============================================
-           TRAINING MODULE VIEWER
-           ============================================ */
-        .module-viewer {
-            display: flex;
-            gap: 0;
-            height: calc(100vh - 148px);
-            margin: -28px;
-        }
-        .lesson-sidebar {
-            width: 280px;
-            background: var(--dark-surface);
-            border-right: 1px solid var(--dark-border);
-            overflow-y: auto;
-            flex-shrink: 0;
-            padding: 0;
-        }
-        .lesson-sidebar-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--dark-border);
-        }
-        .lesson-sidebar-header h3 {
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-        .lesson-sidebar-header p {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-        .lesson-sidebar-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-size: 13px;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-        }
-        .lesson-sidebar-item:hover {
-            background: var(--dark-hover);
-        }
-        .lesson-sidebar-item.active {
-            background: var(--orange-light);
-            color: var(--orange-primary);
-            border-left-color: var(--orange-primary);
-        }
-        .lesson-sidebar-item.completed {
-            color: var(--green-success);
-        }
-        .lesson-sidebar-item.quiz-item {
-            border-top: 1px solid var(--dark-border);
-            font-weight: 600;
-            color: var(--orange-primary);
-        }
-        .lesson-check {
-            width: 20px;
-            height: 20px;
-            border-radius: var(--radius-full);
-            border: 2px solid var(--dark-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            flex-shrink: 0;
-        }
-        .lesson-sidebar-item.completed .lesson-check {
-            background: var(--green-success);
-            border-color: var(--green-success);
-            color: white;
-        }
-        .lesson-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 32px 40px;
-        }
-        .lesson-content h2 {
-            margin-bottom: 8px;
-            font-size: 22px;
-        }
-        .lesson-body {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin-top: 16px;
-        }
-        .video-placeholder {
-            width: 100%;
-            max-width: 700px;
-            aspect-ratio: 16/9;
-            background: var(--dark-card);
-            border: 2px dashed var(--dark-border);
-            border-radius: var(--radius-lg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            color: var(--text-muted);
-            gap: 8px;
-        }
-        .video-placeholder span {
-            font-size: 32px;
-        }
-        .lesson-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 32px;
-            padding-top: 20px;
-            border-top: 1px solid var(--dark-border);
-            max-width: 700px;
-        }
-        .module-card.locked {
-            opacity: 0.45;
-            pointer-events: none;
-            position: relative;
-        }
-        .module-card.locked::after {
-            content: '🔒';
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            font-size: 18px;
-        }
-        .module-card.completed {
-            border-color: var(--green-success);
-        }
-        .module-card .module-progress {
-            margin-top: 12px;
-        }
-        .module-status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        .email-preview-box {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin: 12px 0;
-            white-space: pre-line;
+            header {
+                margin-bottom: 28px;
+                padding-top: 12px;
+            }
+
+            .logo {
+                font-size: 24px;
+                gap: 8px;
+            }
+
+            .logo-icon {
+                font-size: 32px;
+            }
+
+            .welcome-title {
+                font-size: 22px;
+            }
+
+            .assessment-title {
+                font-size: 18px;
+            }
+
+            .question-text {
+                font-size: 15px;
+            }
+
+            .option {
+                padding: 12px;
+            }
+
+            .option-label {
+                font-size: 14px;
+            }
+
+            .modal-content {
+                margin: 20px;
+                padding: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- ============================================
-             SIDEBAR
-             ============================================ -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-logo">UN</div>
-                <div class="sidebar-brand">
-                    <div class="sidebar-brand-name">Urban Niche Academy</div>
-                    <div class="sidebar-brand-sub">Sales Team Hub</div>
-                </div>
+    <div class="container">
+        <div class="demo-banner" id="demoBanner">Demo Mode - Results will be logged to console</div>
+
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🔥</span>
+                <span>Urban Niche Academy</span>
             </div>
+        </header>
 
-            <nav class="sidebar-nav">
-                <div class="nav-section-label">Main</div>
-                <div class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
-                    <span class="nav-icon">&#9634;</span>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item" data-page="pipeline" onclick="navigateTo('pipeline')">
-                    <span class="nav-icon">&#9654;</span>
-                    <span>Pipeline</span>
-                    <span class="nav-badge" id="pipeline-count">3</span>
-                </div>
+        <!-- Step 1: Welcome Screen -->
+        <div class="step active" id="step1">
+            <div class="welcome-content">
+                <h1 class="welcome-title">Welcome, <span id="candidateName">Candidate</span>!</h1>
+                <p class="welcome-subtitle">You're about to take the Urban Niche Co. Sales Team Assessment. This evaluation has two parts designed to assess your knowledge and communication skills.</p>
 
-                <div class="nav-section-label">Assessments</div>
-                <div class="nav-item" data-page="assessment-software" onclick="navigateTo('assessment-software')">
-                    <span class="nav-icon">&#128187;</span>
-                    <span>Software Knowledge</span>
-                </div>
-                <div class="nav-item" data-page="assessment-comms" onclick="navigateTo('assessment-comms')">
-                    <span class="nav-icon">&#128172;</span>
-                    <span>Communication</span>
-                </div>
-                <div class="nav-item" data-page="scores" onclick="navigateTo('scores')">
-                    <span class="nav-icon">&#127942;</span>
-                    <span>Score Center</span>
-                </div>
-                <div class="nav-item" data-page="results" onclick="navigateTo('results')">
-                    <span class="nav-icon">&#10003;</span>
-                    <span>My Results</span>
-                </div>
-
-                <div class="nav-section-label">Training</div>
-                <div class="nav-item" data-page="training" onclick="navigateTo('training')">
-                    <span class="nav-icon">&#128218;</span>
-                    <span>Training Hub</span>
-                </div>
-                <div class="nav-item" data-page="sops" onclick="navigateTo('sops')">
-                    <span class="nav-icon">&#128196;</span>
-                    <span>SOPs & Resources</span>
-                </div>
-
-                <div class="nav-section-label">Admin</div>
-                <div class="nav-item" data-page="admin" onclick="navigateTo('admin')">
-                    <span class="nav-icon">&#9881;</span>
-                    <span>Admin Panel</span>
-                </div>
-                <div class="nav-item" data-page="setup-guide" onclick="navigateTo('setup-guide')">
-                    <span class="nav-icon">&#128214;</span>
-                    <span>Setup Guide</span>
-                </div>
-                <div class="nav-item" data-page="settings" onclick="navigateTo('settings')">
-                    <span class="nav-icon">&#128736;</span>
-                    <span>Settings</span>
-                </div>
-            </nav>
-
-            <div class="sidebar-footer">
-                <div class="user-card">
-                    <div class="user-avatar">RG</div>
-                    <div class="user-info">
-                        <div class="user-name">Ricky Garner</div>
-                        <div class="user-role">Admin</div>
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <div class="card-icon">📚</div>
+                        <div class="card-title">Part 1: Software Knowledge</div>
+                        <div class="card-info">10 questions • 25 min timer • Multiple choice</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">💬</div>
+                        <div class="card-title">Part 2: Communication</div>
+                        <div class="card-info">10 scenarios • Untimed • Best response</div>
                     </div>
                 </div>
+
+                <button class="button button-primary" onclick="goToStep(2)">Begin Assessment</button>
             </div>
-        </aside>
-
-        <!-- ============================================
-             MAIN CONTENT
-             ============================================ -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <header class="top-bar">
-                <div class="top-bar-left">
-                    <button class="top-btn" id="menu-toggle" onclick="toggleSidebar()" style="display:none;">&#9776;</button>
-                    <div>
-                        <div class="page-title" id="page-title">Dashboard</div>
-                        <div class="breadcrumb">Urban Niche Academy <span>/ Dashboard</span></div>
-                    </div>
-                </div>
-                <div class="top-bar-right">
-                    <button class="top-btn" title="Notifications">&#128276;</button>
-                    <button class="top-btn" title="Search">&#128269;</button>
-                </div>
-            </header>
-
-            <!-- Page Container -->
-            <div class="page-container">
-
-                <!-- ===== DASHBOARD PAGE ===== -->
-                <div class="page active" id="page-dashboard">
-                    <div class="welcome-banner">
-                        <h2>Welcome back, Ricky</h2>
-                        <p>Here's what's happening with your sales team pipeline today. Stay locked in.</p>
-                    </div>
-
-                    <div class="stats-grid" id="dashboard-stats">
-                        <!-- Rendered dynamically -->
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Recent Candidates</h3>
-                            <button class="btn btn-secondary btn-sm" onclick="navigateTo('pipeline')">View All</button>
-                        </div>
-                        <div class="table-container" id="dashboard-recent-candidates">
-                            <!-- Rendered dynamically -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== PIPELINE PAGE ===== -->
-                <div class="page" id="page-pipeline">
-                    <h2 style="margin-bottom:8px;">Candidate Pipeline</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">Track every candidate from application to fully trained.</p>
-
-                    <div class="pipeline" id="pipeline-visual">
-                        <!-- Rendered dynamically -->
-                    </div>
-
-                    <div class="filter-tabs" id="pipeline-filters">
-                        <!-- Rendered dynamically -->
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">All Candidates</h3>
-                            <button class="btn btn-primary btn-sm">+ Add Candidate</button>
-                        </div>
-                        <div class="table-container" id="pipeline-table">
-                            <!-- Rendered dynamically -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== SOFTWARE ASSESSMENT PAGE ===== -->
-                <div class="page" id="page-assessment-software">
-                    <div class="card assessment-card" id="assessment-software-container">
-                        <!-- Assessment engine will render here -->
-                    </div>
-                </div>
-
-                <!-- ===== COMMUNICATION ASSESSMENT PAGE ===== -->
-                <div class="page" id="page-assessment-comms">
-                    <div class="card assessment-card" id="assessment-comms-container">
-                        <!-- Assessment engine will render here -->
-                    </div>
-                </div>
-
-                <!-- ===== RESULTS PAGE ===== -->
-                <div class="page" id="page-results">
-                    <div class="results-container" id="results-content">
-                        <!-- Results will be rendered here -->
-                    </div>
-                </div>
-
-                <!-- ===== SCORE CENTER PAGE ===== -->
-                <div class="page" id="page-scores">
-                    <h2 style="margin-bottom:8px;">Score Center</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">Composite assessment results for all candidates.</p>
-
-                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;margin-bottom:24px;">
-                        <div class="card" style="text-align:center;">
-                            <div class="score-ring" style="--score-pct: 84%;">
-                                <div class="score-ring-inner">
-                                    <div class="score-value">84</div>
-                                    <div class="score-label">Composite</div>
-                                </div>
-                            </div>
-                            <div style="margin-top:12px;font-weight:600;color:var(--white);">Marcus Lee</div>
-                            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Software: 86% &bull; Comms: 82%</div>
-                        </div>
-                        <div class="card" style="text-align:center;">
-                            <div class="score-ring" style="--score-pct: 91%;">
-                                <div class="score-ring-inner">
-                                    <div class="score-value">91</div>
-                                    <div class="score-label">Composite</div>
-                                </div>
-                            </div>
-                            <div style="margin-top:12px;font-weight:600;color:var(--white);">Sarah Reyes</div>
-                            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Software: 93% &bull; Comms: 89%</div>
-                        </div>
-                        <div class="card" style="text-align:center;">
-                            <div class="score-ring" style="--score-pct: 72%;">
-                                <div class="score-ring-inner">
-                                    <div class="score-value">72</div>
-                                    <div class="score-label">Composite</div>
-                                </div>
-                            </div>
-                            <div style="margin-top:12px;font-weight:600;color:var(--white);">Alex Chen</div>
-                            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Software: 68% &bull; Comms: 76%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== TRAINING HUB PAGE ===== -->
-                <div class="page" id="page-training">
-                    <div id="training-hub-content">
-                        <!-- Rendered dynamically by renderTrainingHub() -->
-                    </div>
-                </div>
-
-                <!-- ===== MODULE VIEWER PAGE ===== -->
-                <div class="page" id="page-module-viewer">
-                    <div id="module-viewer-content">
-                        <!-- Rendered dynamically by openModule() -->
-                    </div>
-                </div>
-
-                <!-- ===== SOPs & RESOURCES PAGE ===== -->
-                <div class="page" id="page-sops">
-                    <h2 style="margin-bottom:8px;">SOPs & Resources</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">Standard operating procedures and reference materials.</p>
-
-                    <div class="empty-state">
-                        <div class="empty-icon">&#128196;</div>
-                        <div class="empty-title">SOPs Coming Soon</div>
-                        <div class="empty-desc">This section will house all standard operating procedures, scripts, and reference docs as they're created.</div>
-                        <button class="btn btn-primary">+ Upload First SOP</button>
-                    </div>
-                </div>
-
-                <!-- ===== ADMIN PANEL PAGE ===== -->
-                <div class="page" id="page-admin">
-                    <h2 style="margin-bottom:8px;">Admin Panel</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">Manage candidates, assessment rubrics, and system configuration.</p>
-
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-label">Total Applications</div>
-                            <div class="stat-value">47</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Passed Assessment</div>
-                            <div class="stat-value">18</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Currently Onboarding</div>
-                            <div class="stat-value">4</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Fully Trained</div>
-                            <div class="stat-value">6</div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="card-title" style="margin-bottom:16px;">Quick Actions</h3>
-                        <div style="display:flex;flex-wrap:wrap;gap:12px;">
-                            <button class="btn btn-primary">Export All Scores</button>
-                            <button class="btn btn-secondary">Edit Assessment Rubric</button>
-                            <button class="btn btn-secondary">Manage Training Modules</button>
-                            <button class="btn btn-secondary">View Google Sheet</button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="card-title" style="margin-bottom:12px;">Assessment Passing Threshold</h3>
-                        <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">Candidates must score at or above this composite score to advance to the interview stage.</p>
-                        <div style="display:flex;align-items:center;gap:16px;">
-                            <div style="font-family:var(--font-heading);font-size:36px;font-weight:700;color:var(--orange-primary);">70%</div>
-                            <button class="btn btn-secondary btn-sm">Change Threshold</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== SETUP GUIDE PAGE ===== -->
-                <div class="page" id="page-setup-guide">
-                    <h2 style="margin-bottom:8px;">Setup Guide</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">Step-by-step integration of WPForms, Google Sheets, Zapier, and Google Calendar for the Urban Niche Academy.</p>
-
-                    <div class="setup-step">
-                        <div class="setup-step-badge">1</div>
-                        <div class="setup-step-title">WPForms Application Form</div>
-                        <div class="setup-step-desc">Create a new form on WPForms with fields for collecting candidate information and embed it on your careers page.</div>
-                        <ul class="setup-checklist">
-                            <li>Create new form in WPForms</li>
-                            <li>Add field: Full Name</li>
-                            <li>Add field: Email</li>
-                            <li>Add field: Phone</li>
-                            <li>Add field: Why do you want to join Urban Niche Co? (textarea)</li>
-                            <li>Add field: Previous sales experience? (dropdown: None, 1-2 years, 3-5 years, 5+ years)</li>
-                            <li>Add field: How did you hear about us? (dropdown)</li>
-                            <li>Embed form on urbannicheco.com/careers page</li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-step">
-                        <div class="setup-step-badge">2</div>
-                        <div class="setup-step-title">Google Sheet Setup</div>
-                        <div class="setup-step-desc">Create the master Google Sheet that will store all candidate data and assessment results.</div>
-                        <ul class="setup-checklist">
-                            <li>Go to docs.google.com/spreadsheets</li>
-                            <li>Create new spreadsheet: "Urban Niche Academy"</li>
-                            <li>Create tab: "Candidates"</li>
-                            <li>Create tab: "Assessments"</li>
-                            <li>Create tab: "Training"</li>
-                            <li>Create tab: "Config"</li>
-                            <li>In Config tab, add: CALENDAR_BOOKING_URL, PASSING_THRESHOLD, etc.</li>
-                            <li>Run setupSheets() from Google Apps Script</li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-step">
-                        <div class="setup-step-badge">3</div>
-                        <div class="setup-step-title">Zapier Connection: WPForms to Google Sheets</div>
-                        <div class="setup-step-desc">Automatically sync form submissions to your Google Sheet.</div>
-                        <ul class="setup-checklist">
-                            <li>Log into Zapier.com</li>
-                            <li>Create new Zap</li>
-                            <li>Trigger: WPForms — New Form Entry</li>
-                            <li>Select your application form</li>
-                            <li>Action: Google Sheets — Create Spreadsheet Row</li>
-                            <li>Map Name → Column B</li>
-                            <li>Map Email → Column C</li>
-                            <li>Map Phone → Column D</li>
-                            <li>Auto-generate ID in Column A</li>
-                            <li>Set Stage to "Applied" in Column F</li>
-                            <li>Test and turn on Zap</li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-step">
-                        <div class="setup-step-badge">4</div>
-                        <div class="setup-step-title">Zapier Connection: Google Sheets to Gmail</div>
-                        <div class="setup-step-desc">Send automated confirmation emails when new candidates are added.</div>
-                        <ul class="setup-checklist">
-                            <li>Create new Zap</li>
-                            <li>Trigger: Google Sheets — New Row in Candidates</li>
-                            <li>Select your spreadsheet and Candidates tab</li>
-                            <li>Action: Gmail — Send Email</li>
-                            <li>From: your@urbannicheco.com</li>
-                            <li>To: {{Email}}</li>
-                            <li>Subject: "Welcome to Urban Niche Academy!"</li>
-                            <li>Body: Application confirmation with assessment link</li>
-                            <li>Test and turn on Zap</li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-step">
-                        <div class="setup-step-badge">5</div>
-                        <div class="setup-step-title">Google Calendar Appointment Scheduling</div>
-                        <div class="setup-step-desc">Set up interview scheduling so candidates can book time with your team.</div>
-                        <ul class="setup-checklist">
-                            <li>Go to calendar.google.com</li>
-                            <li>Click Settings → Appointment Schedules</li>
-                            <li>Create schedule: "Urban Niche Co. Interview"</li>
-                            <li>Duration: 30 minutes</li>
-                            <li>Set available hours (e.g., 9 AM - 5 PM)</li>
-                            <li>Set available days (Mon-Fri)</li>
-                            <li>Timezone: Your timezone</li>
-                            <li>Copy the booking link</li>
-                            <li>Paste into CALENDAR_BOOKING_URL in the app config</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- ===== SETTINGS PAGE ===== -->
-                <div class="page" id="page-settings">
-                    <h2 style="margin-bottom:8px;">Settings</h2>
-                    <p style="color:var(--text-muted);margin-bottom:24px;">System configuration and integrations.</p>
-
-                    <div class="card">
-                        <h3 class="card-title" style="margin-bottom:16px;">Integrations</h3>
-                        <div style="display:flex;flex-direction:column;gap:12px;">
-                            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--dark-card);border-radius:var(--radius-md);">
-                                <div style="display:flex;align-items:center;gap:12px;">
-                                    <span style="font-size:20px;">&#128196;</span>
-                                    <div>
-                                        <div style="font-weight:600;color:var(--white);">Google Sheets Backend</div>
-                                        <div style="font-size:12px;color:var(--text-muted);">Connected — syncing candidate data</div>
-                                    </div>
-                                </div>
-                                <span class="badge badge-green">Active</span>
-                            </div>
-                            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--dark-card);border-radius:var(--radius-md);">
-                                <div style="display:flex;align-items:center;gap:12px;">
-                                    <span style="font-size:20px;">&#9889;</span>
-                                    <div>
-                                        <div style="font-weight:600;color:var(--white);">Zapier Automation</div>
-                                        <div style="font-size:12px;color:var(--text-muted);">WPForms → Sheets → Gmail pipeline</div>
-                                    </div>
-                                </div>
-                                <span class="badge badge-green">Active</span>
-                            </div>
-                            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--dark-card);border-radius:var(--radius-md);">
-                                <div style="display:flex;align-items:center;gap:12px;">
-                                    <span style="font-size:20px;">&#128197;</span>
-                                    <div>
-                                        <div style="font-weight:600;color:var(--white);">Google Calendar</div>
-                                        <div style="font-size:12px;color:var(--text-muted);">Interview scheduling for passed candidates</div>
-                                    </div>
-                                </div>
-                                <span class="badge badge-yellow">Setup Required</span>
-                            </div>
-                            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--dark-card);border-radius:var(--radius-md);">
-                                <div style="display:flex;align-items:center;gap:12px;">
-                                    <span style="font-size:20px;">&#127909;</span>
-                                    <div>
-                                        <div style="font-weight:600;color:var(--white);">Google Meet</div>
-                                        <div style="font-size:12px;color:var(--text-muted);">Auto-generate Meet links for interviews</div>
-                                    </div>
-                                </div>
-                                <span class="badge badge-yellow">Setup Required</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </main>
-    </div>
-
-    <!-- Candidate Detail Modal -->
-    <div class="modal-overlay" id="candidate-modal-overlay"></div>
-    <div class="candidate-modal" id="candidate-modal">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <div id="modal-content">
-            <!-- Rendered dynamically -->
         </div>
+
+        <!-- Step 2: Software Knowledge Assessment -->
+        <div class="step" id="step2">
+            <div class="assessment-header">
+                <h2 class="assessment-title">Part 1: Software Knowledge Assessment</h2>
+                <div>
+                    <div class="timer" id="timer">25:00</div>
+                    <span class="timer-label">Time remaining</span>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <span class="progress-label" id="progressLabel">Question 1 of 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <div id="questionContainer"></div>
+
+            <div class="navigation">
+                <button class="button button-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">← Previous</button>
+                <button class="button button-secondary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+            </div>
+
+            <button class="button button-primary" id="submitPart1Btn" onclick="submitPart1()" style="display: none; width: 100%;">Submit Part 1</button>
+        </div>
+
+        <!-- Step 3: Transition Screen -->
+        <div class="step" id="step3">
+            <div class="transition-content">
+                <div class="checkmark">✓</div>
+                <h2 class="transition-title">Part 1 Complete!</h2>
+                <p class="transition-message">Great work! Now let's move to Part 2...</p>
+
+                <div class="part-overview">
+                    <div class="part-overview-title">Part 2: Communication & Situational Assessment</div>
+                    <div class="part-overview-desc">10 real-world scenarios with no time limit. Choose the best response for each situation based on best practices in sales and customer relations.</div>
+                </div>
+
+                <button class="button button-primary" onclick="goToStep(4)">Begin Part 2</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Communication & Situational Assessment -->
+        <div class="step" id="step4">
+            <div class="assessment-header">
+                <h2 class="assessment-title">Part 2: Communication & Situational Assessment</h2>
+                <div class="untimed">⏱ Untimed</div>
+            </div>
+
+            <div class="progress-container">
+                <span class="progress-label" id="progressLabel2">Scenario 1 of 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill2" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <div id="scenarioContainer"></div>
+
+            <div class="navigation">
+                <button class="button button-secondary" id="prevBtn2" onclick="previousScenario()" style="display: none;">← Previous</button>
+                <button class="button button-secondary" id="nextBtn2" onclick="nextScenario()">Next →</button>
+            </div>
+
+            <button class="button button-primary" id="submitPart2Btn" onclick="submitPart2()" style="display: none; width: 100%;">Submit Assessment</button>
+        </div>
+
+        <!-- Step 5: Completion Screen -->
+        <div class="step" id="step5">
+            <div class="completion-content">
+                <div class="completion-icon">✓</div>
+                <h2 class="completion-title">Assessment Complete!</h2>
+                <p class="completion-message">Thank you, <span class="completion-name" id="completionName">Candidate</span>. Your responses have been submitted.</p>
+
+                <div class="next-steps">
+                    <div class="next-steps-title">What happens next</div>
+                    <div class="next-steps-text">Our team will review your results. If you qualify, you'll receive an email with next steps including scheduling an interview with our founder.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div class="modal" id="confirmModal">
+            <div class="modal-content">
+                <h3 class="modal-title" id="modalTitle">Confirm Submission</h3>
+                <p class="modal-message" id="modalMessage">Are you sure you want to submit this part?</p>
+                <div class="modal-buttons">
+                    <button class="button button-secondary" onclick="closeModal()">Cancel</button>
+                    <button class="button button-primary" id="confirmBtn" onclick="confirmSubmit()">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-logo">Urban Niche Academy</div>
+            <div>Powered by Urban Niche Co.</div>
+        </footer>
     </div>
 
     <script>
-        /* ============================================
-           PHASE 3: CANDIDATE DATA STORE
-           ============================================ */
-        const CANDIDATES = [
-            { id: 'UNC-001', name: 'Jordan Davis', email: 'jordan.d@email.com', phone: '515-555-0101', appliedDate: '2026-04-05', stage: 'Assessment', softwareScore: null, commsScore: null, composite: null, notes: '' },
-            { id: 'UNC-002', name: 'Marcus Lee', email: 'marcus.l@email.com', phone: '515-555-0102', appliedDate: '2026-04-02', stage: 'Interview', softwareScore: 86, commsScore: 82, composite: 84, notes: 'Strong communicator, scheduled for April 10' },
-            { id: 'UNC-003', name: 'Sarah Reyes', email: 'sarah.r@email.com', phone: '515-555-0103', appliedDate: '2026-03-28', stage: 'Onboarding', softwareScore: 93, commsScore: 89, composite: 91, notes: 'Top scorer, fast learner' },
-            { id: 'UNC-004', name: 'DeShawn Mitchell', email: 'deshawn.m@email.com', phone: '515-555-0104', appliedDate: '2026-04-06', stage: 'Applied', softwareScore: null, commsScore: null, composite: null, notes: 'New application, referral from contractor client' },
-            { id: 'UNC-005', name: 'Lisa Tran', email: 'lisa.t@email.com', phone: '515-555-0105', appliedDate: '2026-04-01', stage: 'Trained', softwareScore: 88, commsScore: 92, composite: 90, notes: 'Fully onboarded and active' },
-            { id: 'UNC-006', name: 'Tyler Brooks', email: 'tyler.b@email.com', phone: '515-555-0106', appliedDate: '2026-04-07', stage: 'Applied', softwareScore: null, commsScore: null, composite: null, notes: '' },
-            { id: 'UNC-007', name: 'Kayla Washington', email: 'kayla.w@email.com', phone: '515-555-0107', appliedDate: '2026-03-25', stage: 'Interview', softwareScore: 76, commsScore: 71, composite: 74, notes: 'Barely passed, needs coaching' },
-            { id: 'UNC-008', name: 'James Ortega', email: 'james.o@email.com', phone: '515-555-0108', appliedDate: '2026-03-30', stage: 'Assessment', softwareScore: 42, commsScore: null, composite: null, notes: 'Failed software, retaking' }
+        // Configuration
+        const DEMO_MODE = true;
+        const BACKEND_URL = '';
+
+        // State
+        let state = {
+            token: '',
+            candidateName: 'Candidate',
+            currentStep: 1,
+            currentQuestion: 0,
+            currentScenario: 0,
+            softwareAnswers: [],
+            commsAnswers: [],
+            timerInterval: null,
+            timeRemaining: 1500, // 25 minutes in seconds
+            part1Submitted: false,
+            part2Submitted: false
+        };
+
+        // Questions Data
+        const softwareQuestions = [
+            {
+                question: "A client wants to collect job request forms on their website. Which tool would you recommend from our stack for building and embedding custom forms?",
+                options: ["Google Forms", "WPForms", "ManyChat", "Zapier"],
+                correct: 1
+            },
+            {
+                question: "A contractor wants to automatically send a follow-up email when someone fills out their contact form. Which tool connects the form submission to the email trigger?",
+                options: ["Stripe", "ManyChat", "Zapier", "Google Calendar"],
+                correct: 2
+            },
+            {
+                question: "What is Google Docs primarily used for in our sales workflow?",
+                options: ["Processing payments", "Creating and sharing collaborative documents", "Building forms", "Managing projects"],
+                correct: 1
+            },
+            {
+                question: "Which tool is specifically designed for instant messaging marketing and chatbot automation on Facebook and Instagram?",
+                options: ["Google Workspace", "Stripe", "ManyChat", "WordPress"],
+                correct: 2
+            },
+            {
+                question: "What does Stripe do in our system?",
+                options: ["Automates workflows between apps", "Processes online payments and subscriptions", "Creates contact forms", "Manages customer relationships"],
+                correct: 1
+            },
+            {
+                question: "How would you best describe Claude AI in the context of a contractor marketing agency?",
+                options: ["A payment processor", "An AI assistant that can help with content creation, strategy, and customer support", "A form builder", "A social media scheduler"],
+                correct: 1
+            },
+            {
+                question: "What is a CRM and why would a contractor use one?",
+                options: ["A content management system for websites", "A tool to track leads, manage relationships, and organize sales pipelines", "A payment processing system", "A form builder"],
+                correct: 1
+            },
+            {
+                question: "What is WordPress in the context of contractor websites?",
+                options: ["A paid advertising platform", "An open-source platform for building and managing websites", "An email marketing tool", "A video conferencing system"],
+                correct: 1
+            },
+            {
+                question: "When advising a contractor on social media marketing, what is the primary goal for Facebook and Instagram?",
+                options: ["To create brand awareness and generate leads through targeted ads and content", "To process payments", "To build a CRM system", "To automate form submissions"],
+                correct: 0
+            },
+            {
+                question: "What does SEO stand for and what does it accomplish?",
+                options: ["Social Email Optimization — sending emails through social media", "Search Engine Optimization — improving visibility in organic search results", "Social Engagement Output — measuring social media interaction", "Server Error Optimization — fixing website errors"],
+                correct: 1
+            }
         ];
 
-        const CALENDAR_BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID';
-
-        const PIPELINE_STAGES = ['Applied', 'Assessment', 'Interview', 'Onboarding', 'Trained'];
-
-        /* ============================================
-           DASHBOARD RENDERING (DATA-DRIVEN)
-           ============================================ */
-        function renderDashboard() {
-            // Calculate stats from CANDIDATES
-            const activeCount = CANDIDATES.filter(c => c.stage !== 'Trained').length;
-            const assessmentCount = CANDIDATES.filter(c => c.stage === 'Assessment').length;
-            const interviewCount = CANDIDATES.filter(c => c.stage === 'Interview').length;
-            const scoredCandidates = CANDIDATES.filter(c => c.composite !== null);
-            const avgScore = scoredCandidates.length > 0
-                ? Math.round(scoredCandidates.reduce((sum, c) => sum + c.composite, 0) / scoredCandidates.length)
-                : 0;
-
-            // Render stats
-            const statsHtml = `
-                <div class="stat-card">
-                    <div class="stat-label">Active Candidates</div>
-                    <div class="stat-value">${activeCount}</div>
-                    <div class="stat-change up">&#9650; ${activeCount} total</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Assessments Pending</div>
-                    <div class="stat-value">${assessmentCount}</div>
-                    <div class="stat-change">awaiting completion</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Interviews Scheduled</div>
-                    <div class="stat-value">${interviewCount}</div>
-                    <div class="stat-change up">in progress</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Avg. Assessment Score</div>
-                    <div class="stat-value">${avgScore}%</div>
-                    <div class="stat-change up">from ${scoredCandidates.length} candidates</div>
-                </div>
-            `;
-            document.getElementById('dashboard-stats').innerHTML = statsHtml;
-
-            // Render recent candidates table (last 5 sorted by appliedDate)
-            const recent = CANDIDATES.sort((a, b) => new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0, 5);
-            let tableHtml = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Stage</th>
-                            <th>Assessment Score</th>
-                            <th>Applied</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            recent.forEach(c => {
-                const scoreDisplay = c.composite !== null ? `${c.composite}%` : '—';
-                const stageColor = c.stage === 'Assessment' ? 'badge-orange' : c.stage === 'Interview' ? 'badge-blue' : c.stage === 'Onboarding' ? 'badge-green' : 'badge-yellow';
-                const avatarInitials = c.name.split(' ').map(n => n[0]).join('');
-                tableHtml += `
-                    <tr>
-                        <td>
-                            <div class="candidate-name">
-                                <div class="candidate-avatar">${avatarInitials}</div>
-                                <div>
-                                    <div style="color:var(--white);font-weight:500;">${c.name}</div>
-                                    <div style="font-size:12px;color:var(--text-muted);">${c.email}</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td><span class="badge ${stageColor}">${c.stage}</span></td>
-                        <td>${scoreDisplay}</td>
-                        <td>${formatDate(c.appliedDate)}</td>
-                        <td><button class="btn btn-secondary btn-sm" onclick="openCandidateModal('${c.id}')">Review</button></td>
-                    </tr>
-                `;
-            });
-
-            tableHtml += `
-                    </tbody>
-                </table>
-            `;
-            document.getElementById('dashboard-recent-candidates').innerHTML = tableHtml;
-        }
-
-        /* ============================================
-           PIPELINE RENDERING (DATA-DRIVEN)
-           ============================================ */
-        function renderPipeline(filter = 'All') {
-            // Render pipeline visual with actual counts
-            const stageCounts = {};
-            PIPELINE_STAGES.forEach(stage => {
-                stageCounts[stage] = CANDIDATES.filter(c => c.stage === stage).length;
-            });
-
-            let pipelineHtml = '';
-            PIPELINE_STAGES.forEach((stage, idx) => {
-                const isCompleted = idx === 0;
-                const isCurrent = idx === 1;
-                const statusClass = isCompleted ? 'completed' : isCurrent ? 'current' : 'pending';
-
-                pipelineHtml += `
-                    <div class="pipeline-step ${statusClass}">
-                        <div class="pipeline-dot">${isCompleted ? '✓' : isCurrent ? '●' : stageCounts[stage]}</div>
-                        <div class="pipeline-label">${stage}</div>
-                    </div>
-                `;
-
-                if (idx < PIPELINE_STAGES.length - 1) {
-                    const lineClass = isCompleted ? 'completed' : '';
-                    pipelineHtml += `<div class="pipeline-line ${lineClass}"></div>`;
-                }
-            });
-            document.getElementById('pipeline-visual').innerHTML = pipelineHtml;
-
-            // Render filter tabs
-            let filterHtml = '<div class="filter-tab' + (filter === 'All' ? ' active' : '') + '" onclick="renderPipeline(\'All\')">All <span class="filter-tab-count">' + CANDIDATES.length + '</span></div>';
-            PIPELINE_STAGES.forEach(stage => {
-                const count = stageCounts[stage];
-                const isActive = filter === stage ? ' active' : '';
-                filterHtml += `<div class="filter-tab${isActive}" onclick="renderPipeline('${stage}')">${stage} <span class="filter-tab-count">${count}</span></div>`;
-            });
-            document.getElementById('pipeline-filters').innerHTML = filterHtml;
-
-            // Render filtered candidate table
-            const filtered = filter === 'All' ? CANDIDATES : CANDIDATES.filter(c => c.stage === filter);
-            let tableHtml = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Stage</th>
-                            <th>Software Score</th>
-                            <th>Comms Score</th>
-                            <th>Composite</th>
-                            <th>Progress</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-
-            filtered.forEach(c => {
-                const softwareDisplay = c.softwareScore !== null ? `${c.softwareScore}%` : '—';
-                const commsDisplay = c.commsScore !== null ? `${c.commsScore}%` : '—';
-                const compositeDisplay = c.composite !== null ? `${c.composite}%` : '—';
-                const stageColor = c.stage === 'Assessment' ? 'badge-orange' : c.stage === 'Interview' ? 'badge-blue' : c.stage === 'Onboarding' ? 'badge-green' : c.stage === 'Trained' ? 'badge-green' : 'badge-yellow';
-                const progress = PIPELINE_STAGES.indexOf(c.stage) / (PIPELINE_STAGES.length - 1) * 100;
-                const avatarInitials = c.name.split(' ').map(n => n[0]).join('');
-
-                tableHtml += `
-                    <tr>
-                        <td>
-                            <div class="candidate-name">
-                                <div class="candidate-avatar">${avatarInitials}</div>
-                                <span style="color:var(--white);font-weight:500;">${c.name}</span>
-                            </div>
-                        </td>
-                        <td><span class="badge ${stageColor}">${c.stage}</span></td>
-                        <td>${softwareDisplay}</td>
-                        <td>${commsDisplay}</td>
-                        <td>${compositeDisplay}</td>
-                        <td>
-                            <div class="progress-bar-container" style="width:120px;">
-                                <div class="progress-bar-fill" style="width:${progress}%"></div>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn btn-secondary btn-sm" onclick="openCandidateModal('${c.id}')">Review</button>
-                        </td>
-                    </tr>
-                `;
-            });
-
-            tableHtml += `
-                    </tbody>
-                </table>
-            `;
-            document.getElementById('pipeline-table').innerHTML = tableHtml;
-        }
-
-        /* ============================================
-           CANDIDATE MODAL
-           ============================================ */
-        function openCandidateModal(candidateId) {
-            const candidate = CANDIDATES.find(c => c.id === candidateId);
-            if (!candidate) return;
-
-            const stageIndex = PIPELINE_STAGES.indexOf(candidate.stage);
-            const prevStage = stageIndex > 0 ? PIPELINE_STAGES[stageIndex - 1] : null;
-            const nextStage = stageIndex < PIPELINE_STAGES.length - 1 ? PIPELINE_STAGES[stageIndex + 1] : null;
-
-            const avatarInitials = candidate.name.split(' ').map(n => n[0]).join('');
-            const softwareDisplay = candidate.softwareScore !== null ? `${candidate.softwareScore}%` : 'N/A';
-            const commsDisplay = candidate.commsScore !== null ? `${candidate.commsScore}%` : 'N/A';
-            const compositeDisplay = candidate.composite !== null ? `${candidate.composite}%` : 'N/A';
-
-            let content = `
-                <div class="modal-header">
-                    <div class="modal-title">${candidate.name}</div>
-                    <div class="modal-subtitle">${candidate.id}</div>
-                </div>
-
-                <div class="modal-section">
-                    <div class="modal-section-title">Contact Information</div>
-                    <div class="modal-field">
-                        <div class="modal-field-label">Email</div>
-                        <div class="modal-field-value"><a href="mailto:${candidate.email}">${candidate.email}</a></div>
-                    </div>
-                    <div class="modal-field">
-                        <div class="modal-field-label">Phone</div>
-                        <div class="modal-field-value"><a href="tel:${candidate.phone}">${candidate.phone}</a></div>
-                    </div>
-                    <div class="modal-field">
-                        <div class="modal-field-label">Applied Date</div>
-                        <div class="modal-field-value">${formatDate(candidate.appliedDate)}</div>
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <div class="modal-section-title">Pipeline Status</div>
-                    <div class="pipeline" style="margin: 16px 0;">
-            `;
-
-            PIPELINE_STAGES.forEach((stage, idx) => {
-                const isCompleted = idx < stageIndex;
-                const isCurrent = idx === stageIndex;
-                const statusClass = isCompleted ? 'completed' : isCurrent ? 'current' : 'pending';
-
-                content += `
-                    <div class="pipeline-step ${statusClass}" style="flex: 1;">
-                        <div class="pipeline-dot" style="width:28px;height:28px;font-size:12px;">${isCompleted ? '✓' : isCurrent ? '●' : ''}</div>
-                        <div class="pipeline-label" style="font-size:11px;">${stage}</div>
-                    </div>
-                `;
-
-                if (idx < PIPELINE_STAGES.length - 1) {
-                    const lineClass = isCompleted ? 'completed' : '';
-                    content += `<div class="pipeline-line ${lineClass}" style="flex: 0.3;"></div>`;
-                }
-            });
-
-            content += `
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <div class="modal-section-title">Assessment Scores</div>
-                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;">
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;font-weight:700;color:var(--orange-primary);">${softwareDisplay}</div>
-                            <div style="font-size:11px;color:var(--text-muted);">Software</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;font-weight:700;color:var(--orange-primary);">${commsDisplay}</div>
-                            <div style="font-size:11px;color:var(--text-muted);">Comms</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:24px;font-weight:700;color:var(--orange-primary);">${compositeDisplay}</div>
-                            <div style="font-size:11px;color:var(--text-muted);">Composite</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <div class="modal-section-title">Notes</div>
-                    <textarea class="modal-notes-textarea" id="candidate-notes-${candidateId}" placeholder="Add notes about this candidate...">${candidate.notes}</textarea>
-                </div>
-
-                <div class="modal-section" style="border-bottom: none;">
-                    <div class="modal-section-title">Actions</div>
-                    <div class="modal-actions">
-            `;
-
-            if (nextStage) {
-                content += `<button class="btn btn-primary" style="width:100%;" onclick="advanceCandidateStage('${candidateId}', '${nextStage}')">Advance to ${nextStage}</button>`;
-            }
-
-            if (prevStage) {
-                content += `<button class="btn btn-secondary" style="width:100%;" onclick="advanceCandidateStage('${candidateId}', '${prevStage}')">Send Back to ${prevStage}</button>`;
-            }
-
-            if (candidate.stage === 'Interview' && candidate.composite !== null && candidate.composite >= 70) {
-                content += `<button class="btn btn-primary" style="width:100%;" onclick="showInterviewScheduler('${candidateId}')">&#128197; Schedule Interview</button>`;
-            }
-
-            content += `
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('modal-content').innerHTML = content;
-            document.getElementById('candidate-modal').classList.add('open');
-            document.getElementById('candidate-modal-overlay').classList.add('open');
-        }
-
-        function closeModal() {
-            document.getElementById('candidate-modal').classList.remove('open');
-            document.getElementById('candidate-modal-overlay').classList.remove('open');
-        }
-
-        function advanceCandidateStage(candidateId, newStage) {
-            const candidate = CANDIDATES.find(c => c.id === candidateId);
-            if (candidate) {
-                candidate.stage = newStage;
-                updateNavBadges();
-                renderDashboard();
-                renderPipeline();
-                openCandidateModal(candidateId);
-            }
-        }
-
-        function showBookingLink(candidateId) {
-            const candidate = CANDIDATES.find(c => c.id === candidateId);
-            if (!candidate) return;
-
-            const bookingLink = CALENDAR_BOOKING_URL;
-            const emailSubject = `Your Urban Niche Academy Interview - ${candidate.name}`;
-            const emailBody = `Hi ${candidate.name},\n\nCongratulations on passing your assessment! We'd like to schedule your interview.\n\nPlease use the link below to book a time that works for you:\n${bookingLink}\n\nLooking forward to meeting you!\n\nBest regards,\nUrban Niche Academy Team`;
-
-            alert(`Booking Link:\n${bookingLink}\n\nYou can copy this link and send it to ${candidate.email} to let them book their interview.`);
-        }
-
-        function updateNavBadges() {
-            const pipelineCount = CANDIDATES.filter(c => c.stage !== 'Trained').length;
-            document.getElementById('pipeline-count').textContent = pipelineCount;
-        }
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-        }
-
-        /* ============================================
-           ASSESSMENT DATA
-           ============================================ */
-        const ASSESSMENT_DATA = {
-            software: {
-                title: "Software Knowledge Assessment",
-                timeLimit: 25 * 60,
-                questions: [
-                    {
-                        text: "A client wants to collect job request forms on their website. Which tool would you recommend from our stack for building and embedding custom forms?",
-                        options: ["Google Forms", "WPForms", "ManyChat", "Zapier"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "A contractor wants to automatically send a follow-up email when someone fills out their contact form. Which tool connects the form submission to the email trigger?",
-                        options: ["Stripe", "ManyChat", "Zapier", "Google Calendar"],
-                        correctAnswer: 2
-                    },
-                    {
-                        text: "What is Google Docs primarily used for in our sales workflow?",
-                        options: ["Processing payments", "Creating and sharing collaborative documents", "Building forms", "Managing projects"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "Which tool is specifically designed for instant messaging marketing and chatbot automation on Facebook and Instagram?",
-                        options: ["Google Workspace", "Stripe", "ManyChat", "WordPress"],
-                        correctAnswer: 2
-                    },
-                    {
-                        text: "What does Stripe do in our system?",
-                        options: ["Automates workflows between apps", "Processes online payments and subscriptions", "Creates contact forms", "Manages customer relationships"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "How would you best describe Claude AI in the context of a contractor marketing agency?",
-                        options: ["A payment processor", "An AI assistant that can help with content creation, strategy, and customer support", "A form builder", "A social media scheduler"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "What is a CRM and why would a contractor use one?",
-                        options: ["A content management system for websites", "A tool to track leads, manage relationships, and organize sales pipelines", "A payment processing system", "A form builder"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "What is WordPress in the context of contractor websites?",
-                        options: ["A paid advertising platform", "An open-source platform for building and managing websites", "An email marketing tool", "A video conferencing system"],
-                        correctAnswer: 1
-                    },
-                    {
-                        text: "When advising a contractor on social media marketing, what is the primary goal for Facebook and Instagram?",
-                        options: ["To create brand awareness and generate leads through targeted ads and content", "To process payments", "To build a CRM system", "To automate form submissions"],
-                        correctAnswer: 0
-                    },
-                    {
-                        text: "What does SEO stand for and what does it accomplish?",
-                        options: ["Social Email Optimization — sending emails through social media", "Search Engine Optimization — improving visibility in organic search results", "Social Engagement Output — measuring social media interaction", "Server Error Optimization — fixing website errors"],
-                        correctAnswer: 1
-                    }
-                ]
+        const scenarios = [
+            {
+                scenario: "A roofing contractor says: 'I've been burned by marketing companies before. You're all the same — you take my money and I never see any results.' How do you respond?",
+                options: [
+                    "Apologize and offer a discount to earn their trust",
+                    "Acknowledge their frustration, ask what went wrong before, and explain how our approach is different with specific results tracking",
+                    "Tell them our company is nothing like the others and list our features",
+                    "Suggest they try doing their own marketing if they don't trust agencies"
+                ],
+                scores: [0, 10, 2, 0]
             },
-            comms: {
-                title: "Communication & Situational Assessment",
-                timeLimit: 0,
-                questions: [
-                    {
-                        text: "A roofing contractor says: 'I've been burned by marketing companies before. You're all the same — you take my money and I never see any results.' How do you respond?",
-                        options: [
-                            { text: "Apologize and offer a discount to earn their trust", score: 0 },
-                            { text: "Acknowledge their frustration, ask what went wrong before, and explain how our approach is different with specific results tracking", score: 10 },
-                            { text: "Tell them our company is nothing like the others and list our features", score: 2 },
-                            { text: "Suggest they try doing their own marketing if they don't trust agencies", score: 0 }
-                        ]
-                    },
-                    {
-                        text: "You're on a cold outreach call and the contractor answers clearly annoyed and says 'I'm in the middle of a job, don't call me again.' What's your best move?",
-                        options: [
-                            { text: "Quickly pitch your services before they hang up", score: 0 },
-                            { text: "Hang up and never call again", score: 2 },
-                            { text: "Apologize for the timing, ask for a better time to call back, and follow up with a brief text or email", score: 10 },
-                            { text: "Text them immediately after with your full sales pitch", score: 0 }
-                        ]
-                    },
-                    {
-                        text: "A prospect says 'I don't need marketing, I get all my work from referrals.' How do you respond?",
-                        options: [
-                            { text: "Tell them referrals are unreliable and they need your service", score: 2 },
-                            { text: "Acknowledge that referrals are great, but explore if they're losing potential jobs during slow seasons, and show how we can fill gaps", score: 10 },
-                            { text: "Move on to the next prospect immediately", score: 0 },
-                            { text: "Ask them to refer you to their friends", score: 3 }
-                        ]
-                    },
-                    {
-                        text: "During a call, a prospect becomes rude and says 'You guys are all scammers.' How do you handle this?",
-                        options: [
-                            { text: "Hang up and report them", score: 0 },
-                            { text: "Stay calm, don't take it personally, ask what specifically made them feel that way, and address their concern directly", score: 10 },
-                            { text: "Argue back and defend your company aggressively", score: 0 },
-                            { text: "Transfer them to your manager immediately", score: 3 }
-                        ]
-                    },
-                    {
-                        text: "An inbound lead showed strong interest but goes silent after your initial meeting. What do you do?",
-                        options: [
-                            { text: "Send one follow-up email and move on", score: 3 },
-                            { text: "Call multiple times in one day until they answer", score: 0 },
-                            { text: "Send a brief, non-pushy follow-up (email or text) with a specific question or value offer, then wait a reasonable time before trying again", score: 10 },
-                            { text: "Mark them as unqualified and forget about them", score: 0 }
-                        ]
-                    },
-                    {
-                        text: "A contractor says 'That's way too expensive. Another agency offered me a better deal.' How do you respond?",
-                        options: [
-                            { text: "Drop your price immediately to match", score: 0 },
-                            { text: "Explain what they get for the investment and ask what results the cheaper option promises — help them understand value over price", score: 10 },
-                            { text: "Tell them they get what they pay for and goodbye", score: 0 },
-                            { text: "Ask for their competitor's pricing and undercut it", score: 2 }
-                        ]
-                    },
-                    {
-                        text: "A client who hired you 30 days ago says 'I'm not seeing any results yet, I want to cancel.' What's your best response?",
-                        options: [
-                            { text: "Let them cancel — they're right, 30 days is enough time", score: 0 },
-                            { text: "Remind them of the initial timeline you agreed to, show them the work completed so far, and reset expectations with a clear 90-day roadmap", score: 10 },
-                            { text: "Offer a full refund to avoid a bad review", score: 2 },
-                            { text: "Tell them to wait longer without explaining anything", score: 0 }
-                        ]
-                    },
-                    {
-                        text: "During a discovery call, a prospect asks a technical question about SEO that you don't know the answer to. What do you do?",
-                        options: [
-                            { text: "Make up an answer to sound knowledgeable", score: 0 },
-                            { text: "Say 'I don't know' and move on to the next topic", score: 2 },
-                            { text: "Acknowledge you don't know the specific answer, offer to find out and get back to them, and redirect to what you do know about their needs", score: 10 },
-                            { text: "Panic and end the call", score: 0 }
-                        ]
-                    },
-                    {
-                        text: "You receive a cold DM from a prospect that's skeptical: 'Why should I trust some random agency?' How do you respond?",
-                        options: [
-                            { text: "Send them your entire service menu and pricing", score: 2 },
-                            { text: "Give them a compliment to build rapport, briefly explain who you help and how, and ask a qualifying question about their current situation", score: 10 },
-                            { text: "Ignore the message", score: 0 },
-                            { text: "Ask them to call you immediately", score: 1 }
-                        ]
-                    },
-                    {
-                        text: "A prospect is interested but keeps saying 'I need to think about it.' You've had two calls with them. What's your move?",
-                        options: [
-                            { text: "Keep calling and emailing every day until they say yes or no", score: 0 },
-                            { text: "Ask what specific concerns are making them hesitate, address those directly, and give them a clear next step and deadline", score: 10 },
-                            { text: "Stop reaching out — they're not serious", score: 2 },
-                            { text: "Lower your price to remove objections", score: 3 }
-                        ]
-                    }
-                ]
+            {
+                scenario: "You're on a cold outreach call and the contractor answers clearly annoyed and says 'I'm in the middle of a job, don't call me again.' What's your best move?",
+                options: [
+                    "Quickly pitch your services before they hang up",
+                    "Hang up and never call again",
+                    "Apologize for the timing, ask for a better time to call back, and follow up with a brief text or email",
+                    "Text them immediately after with your full sales pitch"
+                ],
+                scores: [0, 2, 10, 0]
+            },
+            {
+                scenario: "A prospect says 'I don't need marketing, I get all my work from referrals.' How do you respond?",
+                options: [
+                    "Tell them referrals are unreliable and they need your service",
+                    "Acknowledge that referrals are great, but explore if they're losing potential jobs during slow seasons, and show how we can fill gaps",
+                    "Move on to the next prospect immediately",
+                    "Ask them to refer you to their friends"
+                ],
+                scores: [2, 10, 0, 3]
+            },
+            {
+                scenario: "During a call, a prospect becomes rude and says 'You guys are all scammers.' How do you handle this?",
+                options: [
+                    "Hang up and report them",
+                    "Stay calm, don't take it personally, ask what specifically made them feel that way, and address their concern directly",
+                    "Argue back and defend your company aggressively",
+                    "Transfer them to your manager immediately"
+                ],
+                scores: [0, 10, 0, 3]
+            },
+            {
+                scenario: "An inbound lead showed strong interest but goes silent after your initial meeting. What do you do?",
+                options: [
+                    "Send one follow-up email and move on",
+                    "Call multiple times in one day until they answer",
+                    "Send a brief, non-pushy follow-up (email or text) with a specific question or value offer, then wait a reasonable time before trying again",
+                    "Mark them as unqualified and forget about them"
+                ],
+                scores: [3, 0, 10, 0]
+            },
+            {
+                scenario: "A contractor says 'That's way too expensive. Another agency offered me a better deal.' How do you respond?",
+                options: [
+                    "Drop your price immediately to match",
+                    "Explain what they get for the investment and ask what results the cheaper option promises — help them understand value over price",
+                    "Tell them they get what they pay for and goodbye",
+                    "Ask for their competitor's pricing and undercut it"
+                ],
+                scores: [0, 10, 0, 2]
+            },
+            {
+                scenario: "A client who hired you 30 days ago says 'I'm not seeing any results yet, I want to cancel.' What's your best response?",
+                options: [
+                    "Let them cancel — they're right, 30 days is enough time",
+                    "Remind them of the initial timeline you agreed to, show them the work completed so far, and reset expectations with a clear 90-day roadmap",
+                    "Offer a full refund to avoid a bad review",
+                    "Tell them to wait longer without explaining anything"
+                ],
+                scores: [0, 10, 2, 0]
+            },
+            {
+                scenario: "During a discovery call, a prospect asks a technical question about SEO that you don't know the answer to. What do you do?",
+                options: [
+                    "Make up an answer to sound knowledgeable",
+                    "Say 'I don't know' and move on to the next topic",
+                    "Acknowledge you don't know the specific answer, offer to find out and get back to them, and redirect to what you do know about their needs",
+                    "Panic and end the call"
+                ],
+                scores: [0, 2, 10, 0]
+            },
+            {
+                scenario: "You receive a cold DM from a prospect that's skeptical: 'Why should I trust some random agency?' How do you respond?",
+                options: [
+                    "Send them your entire service menu and pricing",
+                    "Give them a compliment to build rapport, briefly explain who you help and how, and ask a qualifying question about their current situation",
+                    "Ignore the message",
+                    "Ask them to call you immediately"
+                ],
+                scores: [2, 10, 0, 1]
+            },
+            {
+                scenario: "A prospect is interested but keeps saying 'I need to think about it.' You've had two calls with them. What's your move?",
+                options: [
+                    "Keep calling and emailing every day until they say yes or no",
+                    "Ask what specific concerns are making them hesitate, address those directly, and give them a clear next step and deadline",
+                    "Stop reaching out — they're not serious",
+                    "Lower your price to remove objections"
+                ],
+                scores: [0, 10, 2, 3]
             }
-        };
+        ];
 
-        let assessmentState = {
-            currentSection: null,
-            currentQuestion: 0,
-            answers: {},
-            submitted: false,
-            results: null
-        };
+        // Initialize
+        function init() {
+            // Get URL params
+            const params = new URLSearchParams(window.location.search);
+            state.token = params.get('token') || 'demo-token';
+            state.candidateName = params.get('name') || 'Candidate';
 
-        /* ============================================
-           ASSESSMENT ENGINE
-           ============================================ */
+            // Show demo banner if in demo mode
+            if (DEMO_MODE) {
+                document.getElementById('demoBanner').classList.add('show');
+            }
 
-        function initAssessment(section) {
-            assessmentState.currentSection = section;
-            assessmentState.currentQuestion = 0;
-            assessmentState.answers = {};
-            assessmentState.submitted = false;
-            renderAssessmentQuestion(section);
+            // Set candidate name
+            document.getElementById('candidateName').textContent = state.candidateName;
+            document.getElementById('completionName').textContent = state.candidateName;
+
+            // Initialize arrays
+            state.softwareAnswers = new Array(softwareQuestions.length).fill(-1);
+            state.commsAnswers = new Array(scenarios.length).fill(-1);
+
+            // Start first question
+            renderQuestion();
         }
 
-        function renderAssessmentQuestion(section) {
-            const data = ASSESSMENT_DATA[section];
-            const container = document.getElementById('assessment-' + section + '-container');
-            const questionIndex = assessmentState.currentQuestion;
-            const question = data.questions[questionIndex];
-            const totalQuestions = data.questions.length;
-            const progressPercent = ((questionIndex + 1) / totalQuestions) * 100;
+        // Step Navigation
+        function goToStep(step) {
+            if (step < state.currentStep && step === 1) {
+                alert('You cannot go back to Part 1 after submission.');
+                return;
+            }
 
-            let html = `
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-                    <div>
-                        <div class="badge ${section === 'software' ? 'badge-orange' : 'badge-blue'}">Question ${questionIndex + 1} of ${totalQuestions}</div>
-                        <h3 class="card-title" style="margin-top:8px;">${data.title}</h3>
-                    </div>
-                    ${data.timeLimit > 0 ? `
-                    <div style="text-align:right;">
-                        <div style="font-size:13px;color:var(--text-muted);">Time Remaining</div>
-                        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--orange-primary);" id="timer-${section}">25:00</div>
-                    </div>
-                    ` : `
-                    <div style="text-align:right;">
-                        <div style="font-size:13px;color:var(--text-muted);">Assessment</div>
-                        <div style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--orange-primary);">Untimed</div>
-                    </div>
-                    `}
-                </div>
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            state.currentStep = step;
 
-                <div class="progress-bar-container" style="margin-bottom:24px;">
-                    <div class="progress-bar-fill" style="width:${progressPercent}%"></div>
-                </div>
-
-                <div class="question-block">
-                    <div class="question-number">Question ${questionIndex + 1} of ${totalQuestions}</div>
-                    <div class="question-text">${question.text}</div>
-                    <div class="option-list">
-            `;
-
-            question.options.forEach((option, idx) => {
-                const optionText = typeof option === 'string' ? option : option.text;
-                const isSelected = assessmentState.answers[questionIndex] === idx ? 'selected' : '';
-                html += `
-                    <div class="option-item ${isSelected}" onclick="selectAssessmentOption(${questionIndex}, ${idx}, '${section}')">
-                        <div class="option-radio"></div>
-                        <span>${optionText}</span>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-
-                <div style="display:flex;justify-content:space-between;margin-top:24px;">
-                    <button class="btn btn-secondary" onclick="previousQuestion('${section}')" ${questionIndex === 0 ? 'disabled' : ''}>&#8592; Previous</button>
-                    ${questionIndex === totalQuestions - 1 ? `
-                    <button class="btn btn-primary" onclick="submitAssessment('${section}')">Submit Assessment</button>
-                    ` : `
-                    <button class="btn btn-primary" onclick="nextQuestion('${section}')">Next &#8594;</button>
-                    `}
-                </div>
-            `;
-
-            container.innerHTML = html;
-
-            if (data.timeLimit > 0 && !window.timerRunning) {
-                startAssessmentTimer(section);
+            if (step === 2) {
+                startTimer();
+                renderQuestion();
+            } else if (step === 4) {
+                renderScenario();
             }
         }
 
-        function selectAssessmentOption(questionIndex, optionIndex, section) {
-            assessmentState.answers[questionIndex] = optionIndex;
-            renderAssessmentQuestion(section);
-        }
+        // Timer
+        function startTimer() {
+            state.timeRemaining = 1500;
+            updateTimerDisplay();
 
-        function nextQuestion(section) {
-            const data = ASSESSMENT_DATA[section];
-            if (assessmentState.currentQuestion < data.questions.length - 1) {
-                assessmentState.currentQuestion++;
-                renderAssessmentQuestion(section);
-            }
-        }
+            if (state.timerInterval) clearInterval(state.timerInterval);
 
-        function previousQuestion(section) {
-            if (assessmentState.currentQuestion > 0) {
-                assessmentState.currentQuestion--;
-                renderAssessmentQuestion(section);
-            }
-        }
+            state.timerInterval = setInterval(() => {
+                state.timeRemaining--;
+                updateTimerDisplay();
 
-        function submitAssessment(section) {
-            const data = ASSESSMENT_DATA[section];
-            const answers = assessmentState.answers;
-
-            let softwareScore = 0, commsScore = 0;
-
-            if (section === 'software') {
-                let correct = 0;
-                data.questions.forEach((q, idx) => {
-                    if (answers[idx] === q.correctAnswer) correct++;
-                });
-                softwareScore = Math.round((correct / data.questions.length) * 100);
-            } else {
-                let totalScore = 0;
-                data.questions.forEach((q, idx) => {
-                    const selectedOption = q.options[answers[idx]];
-                    totalScore += selectedOption.score || 0;
-                });
-                commsScore = Math.round((totalScore / (data.questions.length * 10)) * 100);
-            }
-
-            assessmentState.submitted = true;
-            assessmentState.results = {
-                section,
-                softwareScore,
-                commsScore,
-                answers
-            };
-
-            showResults();
-        }
-
-        function showResults() {
-            const { section, softwareScore, commsScore, answers } = assessmentState.results;
-            const data = ASSESSMENT_DATA[section];
-            const compositeScore = section === 'software' ? softwareScore : commsScore;
-            const passed = compositeScore >= 70;
-
-            let html = `
-                <div class="results-header">
-                    <div class="results-status ${passed ? 'passed' : 'failed'}">
-                        ${passed ? '✓ Assessment Passed' : '✗ Assessment Failed'}
-                    </div>
-                    <div class="results-message">
-                        ${passed
-                            ? 'Great work! You\'ve demonstrated a strong understanding. You\'re ready to move forward.'
-                            : 'You\'re close! Review the feedback below and retake the assessment when ready.'}
-                    </div>
-                </div>
-
-                <div class="results-scores">
-                    <div class="card" style="text-align:center;">
-                        <div class="score-ring" style="--score-pct: ${compositeScore}%;">
-                            <div class="score-ring-inner">
-                                <div class="score-value">${compositeScore}</div>
-                                <div class="score-label">${section === 'software' ? 'Software' : 'Comms'}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-detail">
-                    <h3 class="results-detail-title">Your Answers</h3>
-            `;
-
-            data.questions.forEach((q, idx) => {
-                const selectedIdx = answers[idx];
-                const correct = section === 'software'
-                    ? selectedIdx === q.correctAnswer
-                    : (q.options[selectedIdx]?.score || 0) > 0;
-
-                const selectedOptionText = typeof q.options[selectedIdx] === 'string'
-                    ? q.options[selectedIdx]
-                    : q.options[selectedIdx]?.text;
-
-                html += `
-                    <div class="results-question ${correct ? 'correct' : 'incorrect'}">
-                        <div class="results-question-label ${correct ? 'correct' : 'incorrect'}">
-                            ${correct ? '✓ Correct' : '✗ Incorrect'}
-                        </div>
-                        <div class="results-question-text" style="font-weight:500;margin-bottom:8px;">Q${idx + 1}: ${q.text}</div>
-                        <div class="results-question-answer">
-                            <strong>Your answer:</strong> ${selectedOptionText}
-                        </div>
-                        ${section === 'software' && !correct ? `
-                        <div class="results-question-answer" style="color:var(--green-success);margin-top:6px;">
-                            <strong>Correct answer:</strong> ${typeof q.options[q.correctAnswer] === 'string' ? q.options[q.correctAnswer] : q.options[q.correctAnswer]?.text}
-                        </div>
-                        ` : ''}
-                    </div>
-                `;
-            });
-
-            html += `
-                </div>
-
-                <div class="results-actions">
-                    ${passed ? `
-                    <button class="btn btn-primary" onclick="navigateTo('results')">View Full Results</button>
-                    <button class="btn btn-secondary" onclick="navigateTo('training')">Go to Training</button>
-                    ` : `
-                    <button class="btn btn-primary" onclick="initAssessment('${section}')">Retake Assessment</button>
-                    <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
-                    `}
-                </div>
-            `;
-
-            const container = document.getElementById('assessment-' + section + '-container');
-            container.innerHTML = html;
-        }
-
-        let timerSeconds = 25 * 60;
-        window.timerRunning = false;
-
-        function startAssessmentTimer(section) {
-            window.timerRunning = true;
-            const timerInterval = setInterval(() => {
-                timerSeconds--;
-                const mins = Math.floor(timerSeconds / 60);
-                const secs = timerSeconds % 60;
-                const timerEl = document.getElementById('timer-' + section);
-                if (timerEl) {
-                    timerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-                }
-
-                if (timerSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    submitAssessment(section);
+                if (state.timeRemaining <= 0) {
+                    clearInterval(state.timerInterval);
+                    submitPart1();
                 }
             }, 1000);
         }
 
-        /* ============================================
-           NAVIGATION & PAGE ROUTING
-           ============================================ */
-        function navigateTo(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        function updateTimerDisplay() {
+            const minutes = Math.floor(state.timeRemaining / 60);
+            const seconds = state.timeRemaining % 60;
+            const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const timerEl = document.getElementById('timer');
+            timerEl.textContent = timeStr;
 
-            // Show target page
-            const target = document.getElementById('page-' + pageId);
-            if (target) target.classList.add('active');
-
-            // Initialize assessments if needed
-            if (pageId === 'assessment-software' && !assessmentState.submitted) {
-                initAssessment('software');
-            } else if (pageId === 'assessment-comms' && !assessmentState.submitted) {
-                initAssessment('comms');
-            } else if (pageId === 'results') {
-                renderResultsPage();
-            } else if (pageId === 'dashboard') {
-                renderDashboard();
-            } else if (pageId === 'pipeline') {
-                renderPipeline();
-            } else if (pageId === 'training') {
-                renderTrainingHub();
-            }
-
-            // Update nav items
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.page === pageId) item.classList.add('active');
-            });
-
-            // Update top bar
-            const titles = {
-                'dashboard': 'Dashboard',
-                'pipeline': 'Candidate Pipeline',
-                'assessment-software': 'Software Assessment',
-                'assessment-comms': 'Communication Assessment',
-                'results': 'Assessment Results',
-                'scores': 'Score Center',
-                'training': 'Training Hub',
-                'module-viewer': 'Module Viewer',
-                'sops': 'SOPs & Resources',
-                'admin': 'Admin Panel',
-                'setup-guide': 'Setup Guide',
-                'settings': 'Settings'
-            };
-
-            document.getElementById('page-title').textContent = titles[pageId] || 'Dashboard';
-        }
-
-        function renderResultsPage() {
-            const container = document.getElementById('results-content');
-            if (!assessmentState.results) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">&#128274;</div>
-                        <div class="empty-title">No Results Yet</div>
-                        <div class="empty-desc">Complete an assessment to view your results here.</div>
-                        <button class="btn btn-primary" onclick="navigateTo('assessment-software')">Start Software Assessment</button>
-                    </div>
-                `;
-                return;
-            }
-
-            const { section, softwareScore, commsScore, answers } = assessmentState.results;
-            const data = ASSESSMENT_DATA[section];
-            const compositeScore = Math.round((softwareScore + commsScore) / 2);
-            const passed = compositeScore >= 70;
-
-            let html = `
-                <div class="results-header">
-                    <h2>Your Assessment Results</h2>
-                    <div class="results-status ${passed ? 'passed' : 'failed'}" style="margin-top:16px;">
-                        ${passed ? '✓ Congratulations! You Passed' : '✗ Not Quite Yet'}
-                    </div>
-                    <div class="results-message">
-                        ${passed
-                            ? 'You\'re ready for the next phase of training and development.'
-                            : 'Keep studying and retake the assessments to advance.'}
-                    </div>
-                </div>
-
-                <div class="results-scores">
-                    <div class="card" style="text-align:center;">
-                        <div class="score-ring" style="--score-pct: ${softwareScore}%;">
-                            <div class="score-ring-inner">
-                                <div class="score-value">${softwareScore}</div>
-                                <div class="score-label">Software</div>
-                            </div>
-                        </div>
-                        <div style="margin-top:12px;font-size:13px;color:var(--text-muted);">Knowledge</div>
-                    </div>
-                    <div class="card" style="text-align:center;">
-                        <div class="score-ring" style="--score-pct: ${commsScore}%;">
-                            <div class="score-ring-inner">
-                                <div class="score-value">${commsScore}</div>
-                                <div class="score-label">Comms</div>
-                            </div>
-                        </div>
-                        <div style="margin-top:12px;font-size:13px;color:var(--text-muted);">Situational</div>
-                    </div>
-                    <div class="card" style="text-align:center;">
-                        <div class="score-ring" style="--score-pct: ${compositeScore}%;">
-                            <div class="score-ring-inner">
-                                <div class="score-value">${compositeScore}</div>
-                                <div class="score-label">Composite</div>
-                            </div>
-                        </div>
-                        <div style="margin-top:12px;font-size:13px;color:var(--text-muted);">Overall</div>
-                    </div>
-                </div>
-
-                <div class="results-actions">
-                    ${passed ? `
-                    <button class="btn btn-primary" onclick="navigateTo('training')">Start Training</button>
-                    <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
-                    ` : `
-                    <button class="btn btn-primary" onclick="initAssessment('${section}')">Retake Assessments</button>
-                    <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
-                    `}
-                </div>
-            `;
-
-            container.innerHTML = html;
-        }
-
-        /* ============================================
-           ASSESSMENT INTERACTIONS
-           ============================================ */
-        function selectOption(el) {
-            const siblings = el.parentElement.querySelectorAll('.option-item');
-            siblings.forEach(s => s.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-
-        /* ============================================
-           SIDEBAR TOGGLE (mobile)
-           ============================================ */
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-
-        function checkMobile() {
-            const btn = document.getElementById('menu-toggle');
-            if (window.innerWidth <= 768) {
-                btn.style.display = 'flex';
+            if (state.timeRemaining < 120) {
+                timerEl.classList.add('warning');
             } else {
-                btn.style.display = 'none';
+                timerEl.classList.remove('warning');
             }
         }
-        window.addEventListener('resize', checkMobile);
-        checkMobile();
 
-        /* ============================================
-           GOOGLE APPS SCRIPT INTEGRATION PLACEHOLDER
-           ============================================ */
-        const API = {
-            BASE_URL: 'YOUR_GOOGLE_APPS_SCRIPT_URL',
+        // Render Question
+        function renderQuestion() {
+            const q = softwareQuestions[state.currentQuestion];
+            const container = document.getElementById('questionContainer');
 
-            async getCandidates() {
-                console.log('API: getCandidates()');
-            },
+            let html = `<div class="question-text">${q.question}</div><div class="options">`;
 
-            async submitAssessment(candidateId, answers) {
-                console.log('API: submitAssessment()', candidateId, answers);
-            },
-
-            async getScores(candidateId) {
-                console.log('API: getScores()', candidateId);
-            },
-
-            async getTrainingModules() {
-                console.log('API: getTrainingModules()');
-            }
-        };
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            renderDashboard();
-            updateNavBadges();
-        });
-
-        /* ============================================
-           TRAINING MODULE DATA
-           ============================================ */
-        const TRAINING_MODULES = [
-            {
-                id: 'mod-1', title: 'Getting Started at Urban Niche Co.', description: 'Company overview, culture, mission, and how we serve contractors in the Midwest.', icon: '&#128640;', required: true, order: 1,
-                lessons: [
-                    { id: 'L1-1', title: 'Welcome to Urban Niche Co.', type: 'video', videoUrl: '', content: 'Welcome to the team! Urban Niche Co. is a digital marketing agency built specifically for contractors and home service businesses across the Midwest. In this lesson, you will learn who we are, what we stand for, and why we exist.' },
-                    { id: 'L1-2', title: 'Our Mission & Values', type: 'text', content: 'Our mission is to help contractors grow their businesses through AI-powered marketing. We value transparency, results, and treating every client like a partner — not a number. We only work with trades and home service pros because we believe in going deep, not wide.' },
-                    { id: 'L1-3', title: 'Who We Serve', type: 'text', content: 'Our clients are roofers, general contractors, remodelers, plumbers, electricians, HVAC companies, and other home service businesses. They are hardworking people who are great at their trade but need help getting found online and turning clicks into calls.' },
-                    { id: 'L1-4', title: 'How Our Sales Team Fits In', type: 'text', content: 'As a sales rep, you are the bridge between contractors who need help and the solutions we provide. Your job is to find the right clients, understand their pain points, and show them how Urban Niche Co. can change their business. You are not just selling — you are solving problems.' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'What type of businesses does Urban Niche Co. serve?', options: ['E-commerce stores', 'Contractors and home service businesses', 'Restaurants and food service', 'Tech startups'], correct: 1 },
-                    { text: 'What is the primary role of a sales rep at UNC?', options: ['Building websites', 'Finding clients and solving their marketing problems', 'Managing social media accounts', 'Writing blog posts'], correct: 1 },
-                    { text: 'Which region does Urban Niche Co. primarily operate in?', options: ['West Coast', 'Southeast', 'Midwest', 'Northeast'], correct: 2 }
-                ]}
-            },
-            {
-                id: 'mod-2', title: 'Tool Stack Mastery', description: 'Deep dive into Google Workspace, WPForms, Zapier, ManyChat, Stripe and how they work together.', icon: '&#128187;', required: true, order: 2,
-                lessons: [
-                    { id: 'L2-1', title: 'Google Workspace Overview', type: 'text', content: 'Google Workspace is our operational backbone. We use Gmail for communication, Google Drive for file storage and sharing, Google Docs for proposals and SOPs, Google Sheets for tracking data and reporting, and Google Calendar for scheduling. Every rep needs to be fluent in these tools.' },
-                    { id: 'L2-2', title: 'WordPress & WPForms', type: 'text', content: 'Most of our clients have WordPress websites. WPForms is the plugin we use to build contact forms, job request forms, and lead capture forms on client sites. You need to understand what WordPress is, how forms work, and how form submissions become leads.' },
-                    { id: 'L2-3', title: 'Zapier: The Automation Engine', type: 'text', content: 'Zapier connects apps together without code. When a form is submitted, Zapier can automatically add that lead to a spreadsheet, send a confirmation email, notify the team in Slack, and more. Understanding Zapier is key to explaining our automation capabilities to clients.' },
-                    { id: 'L2-4', title: 'ManyChat & Messenger Marketing', type: 'text', content: 'ManyChat is our chatbot and messenger marketing tool. It works on Facebook Messenger and Instagram DMs to automatically respond to leads, qualify them with questions, and book appointments. This is a powerful tool for contractors who miss calls during the workday.' },
-                    { id: 'L2-5', title: 'Stripe & Payment Processing', type: 'text', content: 'Stripe handles all payment processing. Clients pay through Stripe for our services, and we can also set up Stripe for clients who need to accept online payments. Understanding basic Stripe concepts (invoices, subscriptions, payment links) helps you discuss pricing confidently.' },
-                    { id: 'L2-6', title: 'Claude AI in Our Workflow', type: 'text', content: 'We use Claude AI as a productivity multiplier. It helps with drafting proposals, brainstorming campaign ideas, writing ad copy, analyzing data, and building systems. As a rep, you should understand what AI can do for our clients and for your own workflow.' },
-                    { id: 'L2-7', title: 'CRM Fundamentals', type: 'text', content: 'A CRM (Customer Relationship Management) system tracks every interaction with leads and clients. It tells you who to follow up with, when, and what was discussed. Whether we use a spreadsheet or a dedicated tool, CRM discipline is non-negotiable for a sales rep.' },
-                    { id: 'L2-8', title: 'How It All Connects', type: 'text', content: 'The magic is in how these tools work together. A contractor visits the website (WordPress) → fills out a form (WPForms) → data flows to a sheet (Zapier) → confirmation email sends (Gmail) → chatbot follows up (ManyChat) → client pays (Stripe). You need to see the full picture to sell it.' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'What does Zapier do?', options: ['Builds websites', 'Connects apps and automates workflows', 'Processes payments', 'Manages social media'], correct: 1 },
-                    { text: 'What is ManyChat primarily used for?', options: ['Email marketing', 'Chatbot and messenger marketing on Facebook/Instagram', 'SEO optimization', 'Project management'], correct: 1 },
-                    { text: 'What is a CRM?', options: ['A type of website', 'A system for tracking leads and client interactions', 'A social media platform', 'A payment processor'], correct: 1 },
-                    { text: 'Which tool handles payment processing in our stack?', options: ['Zapier', 'WPForms', 'Stripe', 'Google Sheets'], correct: 2 },
-                    { text: 'What is the correct flow when a lead fills out a form?', options: ['Form → Stripe → Email', 'Form → Zapier → Sheet → Email', 'Form → ManyChat → CRM', 'Form → Google Docs → Calendar'], correct: 1 }
-                ]}
-            },
-            {
-                id: 'mod-3', title: 'Sales Communication', description: 'Cold outreach scripts, objection handling, closing techniques for contractor clients.', icon: '&#128172;', required: true, order: 3,
-                lessons: [
-                    { id: 'L3-1', title: 'The Contractor Mindset', type: 'text', content: 'Contractors are busy, hands-on people. They are skeptical of marketing because many have been burned before. They value directness, honesty, and proof. Do not talk to them like corporate executives — talk to them like real people who need real results.' },
-                    { id: 'L3-2', title: 'Cold Outreach Fundamentals', type: 'text', content: 'Cold outreach is about starting conversations, not closing deals. Your first message or call should be short, relevant, and value-driven. Lead with something specific about their business — a Google review, their website, a recent project. Show you did your homework.' },
-                    { id: 'L3-3', title: 'Handling Common Objections', type: 'text', content: 'The top objections you will hear: "I have been burned before," "I get all my work from referrals," "That is too expensive," and "I need to think about it." For each one, the key is to acknowledge first, ask questions second, and educate third. Never argue or get defensive.' },
-                    { id: 'L3-4', title: 'The Discovery Call Framework', type: 'text', content: 'A discovery call has three phases: (1) Build rapport — ask about their business, compliment their work; (2) Diagnose — ask about their current lead sources, biggest challenges, slow seasons; (3) Prescribe — based on what they told you, show how our services solve their specific problems. Never pitch before you diagnose.' },
-                    { id: 'L3-5', title: 'Closing with Confidence', type: 'text', content: 'Closing is not about pressure — it is about clarity. Summarize what they told you, restate the problem, present the solution with a specific price, and ask directly: "Would you like to get started?" If they hesitate, ask what is holding them back and address it. Always set a next step before ending any call.' },
-                    { id: 'L3-6', title: 'Follow-Up That Actually Works', type: 'text', content: 'Most deals are won in the follow-up, not the first call. Follow up within 24 hours with a summary of your conversation. Then check in at day 3, day 7, and day 14. Each follow-up should add value — share a case study, a relevant tip, or a question. Never just say "checking in."' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'What should your first cold outreach message focus on?', options: ['Listing all your services and pricing', 'Something specific about their business that shows you did your homework', 'Asking them to schedule a call immediately', 'Sending a generic template'], correct: 1 },
-                    { text: 'When a contractor says "I have been burned before," what should you do first?', options: ['Offer a discount', 'Acknowledge their frustration and ask what happened', 'List your company credentials', 'Move on to the next prospect'], correct: 1 },
-                    { text: 'What are the three phases of a discovery call?', options: ['Pitch, Close, Follow-up', 'Build rapport, Diagnose, Prescribe', 'Introduction, Demo, Contract', 'Research, Call, Email'], correct: 1 },
-                    { text: 'When following up, what should you avoid?', options: ['Sharing a case study', 'Asking a relevant question', 'Just saying "checking in" with no value', 'Summarizing the previous conversation'], correct: 2 }
-                ]}
-            },
-            {
-                id: 'mod-4', title: 'Understanding Our Clients', description: 'The contractor mindset, common pain points, seasonal patterns, and what drives their buying decisions.', icon: '&#127919;', required: false, order: 4,
-                lessons: [
-                    { id: 'L4-1', title: 'Types of Contractors We Serve', type: 'text', content: 'We work with roofers, general contractors, remodelers, plumbers, electricians, HVAC companies, painters, landscapers, and more. Each trade has unique needs, seasonal patterns, and marketing challenges. Understanding these differences makes you a better salesperson.' },
-                    { id: 'L4-2', title: 'Common Pain Points', type: 'text', content: 'Most contractors struggle with: inconsistent lead flow, reliance on referrals only, no online presence, outdated websites, not showing up on Google, losing leads to competitors with better marketing, and not having time to market themselves because they are always on the job site.' },
-                    { id: 'L4-3', title: 'Seasonal Patterns', type: 'text', content: 'Roofing peaks in spring and after storms. HVAC peaks in summer and winter. Remodeling is steady but slows in holidays. Understanding seasonal patterns helps you time your outreach and set proper expectations about when marketing will have the biggest impact.' },
-                    { id: 'L4-4', title: 'What Drives Their Buying Decisions', type: 'text', content: 'Contractors buy based on: trust (do they believe you), proof (can you show results), simplicity (is it easy to understand), and ROI (will they make more than they spend). Price matters but it is rarely the top factor — trust and proof win.' },
-                    { id: 'L4-5', title: 'Speaking Their Language', type: 'text', content: 'Do not use marketing jargon. Instead of "SEO optimization," say "getting your business to show up first on Google." Instead of "conversion rate," say "turning website visitors into phone calls." Speak in results they care about: more calls, more jobs, less downtime.' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'What is the number one factor that drives contractor buying decisions?', options: ['Lowest price', 'Trust and proof of results', 'The fanciest website', 'Social media followers'], correct: 1 },
-                    { text: 'Instead of "SEO optimization," what should you say?', options: ['Search engine marketing synergies', 'Getting your business to show up first on Google', 'Digital presence enhancement', 'Organic traffic generation'], correct: 1 },
-                    { text: 'Why do seasonal patterns matter for sales reps?', options: ['They do not matter', 'They help you time outreach and set expectations', 'They determine your commission rate', 'They affect which tools to use'], correct: 1 }
-                ]}
-            },
-            {
-                id: 'mod-5', title: 'SEO & PPC Basics', description: 'What your reps need to know about the services we sell — enough to speak credibly.', icon: '&#128200;', required: false, order: 5,
-                lessons: [
-                    { id: 'L5-1', title: 'What is SEO?', type: 'text', content: 'SEO stands for Search Engine Optimization. It is the process of making a website show up higher in Google search results. When a homeowner searches "roofer near me," SEO determines which companies show up first. Better SEO means more visibility, more clicks, more calls.' },
-                    { id: 'L5-2', title: 'Local SEO for Contractors', type: 'text', content: 'Local SEO is specifically about showing up in your area. It includes optimizing the Google Business Profile, getting listed in local directories, earning reviews, and making sure the website mentions the cities and services offered. For contractors, local SEO is the highest-ROI marketing.' },
-                    { id: 'L5-3', title: 'What is PPC?', type: 'text', content: 'PPC stands for Pay Per Click. It means running ads on Google where you pay each time someone clicks. Unlike SEO which takes time, PPC can generate leads immediately. For contractors, Google Ads targeting searches like "emergency plumber" or "roof repair" are extremely effective.' },
-                    { id: 'L5-4', title: 'SEO vs PPC — When to Recommend Each', type: 'text', content: 'SEO is the long game — it builds over months but compounds. PPC is the fast play — immediate leads but you pay for every click. Most contractors benefit from both: PPC for quick leads while SEO builds in the background. Your job is to explain this trade-off clearly.' },
-                    { id: 'L5-5', title: 'Social Media Marketing Basics', type: 'text', content: 'For contractors, social media (Facebook and Instagram) is about building trust and staying top of mind. Before-and-after photos, job site videos, customer reviews, and behind-the-scenes content perform best. Social media rarely generates direct leads but it builds credibility.' },
-                    { id: 'L5-6', title: 'Website Design That Converts', type: 'text', content: 'A contractor website needs: fast loading speed, mobile-friendly design, clear call-to-action, reviews/testimonials, photos of work, and service area pages. If a website does not have these, it is losing leads. This is one of the easiest things to sell.' },
-                    { id: 'L5-7', title: 'Reporting and Results', type: 'text', content: 'Clients want to know their marketing is working. We track: website traffic, phone calls, form submissions, Google ranking positions, ad spend vs leads generated, and cost per lead. You need to understand these metrics well enough to discuss them confidently.' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'What does SEO stand for?', options: ['Social Email Outreach', 'Search Engine Optimization', 'Sales Engagement Operations', 'Site Enhancement Options'], correct: 1 },
-                    { text: 'What is the main difference between SEO and PPC?', options: ['SEO is free/organic and PPC is paid per click', 'SEO only works on Facebook', 'PPC takes months to show results', 'There is no difference'], correct: 0 },
-                    { text: 'What type of marketing has the highest ROI for local contractors?', options: ['National TV ads', 'Local SEO', 'Print flyers', 'Radio spots'], correct: 1 },
-                    { text: 'What should a contractor website always have?', options: ['Animated backgrounds', 'Clear CTA, reviews, service area pages, fast loading', 'Only a phone number', 'A blog with 100+ posts'], correct: 1 }
-                ]}
-            },
-            {
-                id: 'mod-6', title: 'Pricing & Packages', description: 'How to present pricing, build custom packages, and handle budget objections.', icon: '&#128176;', required: false, order: 6,
-                lessons: [
-                    { id: 'L6-1', title: 'Our Service Packages', type: 'text', content: 'Placeholder — Ricky will define specific pricing tiers and packages here. This lesson will cover the exact packages available, what is included in each, and the pricing structure.' },
-                    { id: 'L6-2', title: 'Presenting Price with Confidence', type: 'text', content: 'Never apologize for pricing. Present the investment in terms of what they get: "For $X per month, you are getting a full SEO system, Google Ads management, and a dedicated team focused on getting your phone ringing. Most of our clients see ROI within 90 days."' },
-                    { id: 'L6-3', title: 'Handling Budget Objections', type: 'text', content: 'When a prospect says it is too expensive, do not drop price. Instead ask: "What would it be worth to you to book 10 extra jobs per month?" Reframe the conversation from cost to value. If they truly cannot afford it, offer a smaller starting package they can grow into.' }
-                ],
-                quiz: { passingScore: 70, questions: [
-                    { text: 'When a prospect says your price is too expensive, what should you do?', options: ['Drop the price immediately', 'Reframe from cost to value and ROI', 'Tell them they cannot afford not to', 'End the conversation'], correct: 1 },
-                    { text: 'How should you present pricing?', options: ['Apologetically', 'Confidently, tied to specific results and ROI', 'By comparing to competitors', 'By email only'], correct: 1 }
-                ]}
-            }
-        ];
-
-        // Training progress tracking
-        const TRAINING_PROGRESS = {};
-        let currentModuleId = null;
-        let currentLessonIndex = 0;
-        let moduleQuizState = { answers: [], currentQuestion: 0, submitted: false };
-
-        /* ============================================
-           TRAINING HUB RENDERER
-           ============================================ */
-        function isModuleLocked(mod) {
-            if (!mod.required) return false;
-            // Find the previous required module
-            const requiredMods = TRAINING_MODULES.filter(m => m.required).sort((a, b) => a.order - b.order);
-            const idx = requiredMods.findIndex(m => m.id === mod.id);
-            if (idx === 0) return false; // First required module is always unlocked
-            const prevMod = requiredMods[idx - 1];
-            const prevProgress = TRAINING_PROGRESS[prevMod.id];
-            return !(prevProgress && prevProgress.quizPassed);
-        }
-
-        function isModuleCompleted(modId) {
-            const p = TRAINING_PROGRESS[modId];
-            return p && p.quizPassed;
-        }
-
-        function getModuleProgress(mod) {
-            const p = TRAINING_PROGRESS[mod.id];
-            if (!p) return 0;
-            const lessonsCompleted = (p.lessonsCompleted || []).length;
-            const quizDone = p.quizPassed ? 1 : 0;
-            return Math.round(((lessonsCompleted + quizDone) / (mod.lessons.length + 1)) * 100);
-        }
-
-        function renderTrainingHub() {
-            const container = document.getElementById('training-hub-content');
-            const totalModules = TRAINING_MODULES.length;
-            const completedModules = TRAINING_MODULES.filter(m => isModuleCompleted(m.id)).length;
-            const overallPct = Math.round((completedModules / totalModules) * 100);
-
-            let html = `
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-                    <div>
-                        <h2>Training Hub</h2>
-                        <p style="color:var(--text-muted);margin-top:4px;">Modules, videos, SOPs, and quizzes — your living knowledge base.</p>
-                    </div>
-                </div>
-                <div class="card" style="margin-bottom:24px;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                        <span style="font-weight:600;">Overall Progress</span>
-                        <span style="color:var(--orange-primary);font-weight:700;">${completedModules} of ${totalModules} modules completed</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar-fill" style="width:${overallPct}%"></div>
-                    </div>
-                </div>
-                <div class="modules-grid">
-            `;
-
-            TRAINING_MODULES.forEach(mod => {
-                const locked = isModuleLocked(mod);
-                const completed = isModuleCompleted(mod.id);
-                const progress = getModuleProgress(mod);
-                const lessonsCount = mod.lessons.length;
-                const lessonsDone = (TRAINING_PROGRESS[mod.id]?.lessonsCompleted || []).length;
-                const statusBadge = mod.required
-                    ? '<span class="badge badge-green">Required</span>'
-                    : '<span class="badge badge-orange">Recommended</span>';
-                const completionBadge = completed
-                    ? '<span class="badge badge-green" style="margin-left:6px;">Completed</span>'
-                    : '';
-
+            q.options.forEach((option, index) => {
+                const isSelected = state.softwareAnswers[state.currentQuestion] === index;
+                const selectedClass = isSelected ? 'selected' : '';
                 html += `
-                    <div class="module-card ${locked ? 'locked' : ''} ${completed ? 'completed' : ''}" onclick="${locked ? '' : `openModule('${mod.id}')`}">
-                        <div class="module-icon">${mod.icon}</div>
-                        <div class="module-title">${mod.title}</div>
-                        <div class="module-desc">${mod.description}</div>
-                        <div class="module-meta">
-                            <span>${lessonsCount} lessons + quiz</span>
-                            ${statusBadge}${completionBadge}
-                        </div>
-                        ${!locked && !completed && progress > 0 ? `
-                        <div class="module-progress" style="margin-top:10px;">
-                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">${lessonsDone}/${lessonsCount} lessons &bull; ${progress}%</div>
-                            <div class="progress-bar-container" style="height:4px;">
-                                <div class="progress-bar-fill" style="width:${progress}%"></div>
-                            </div>
-                        </div>` : ''}
-                    </div>
+                    <label class="option ${selectedClass}">
+                        <input type="radio" name="option" value="${index}" ${isSelected ? 'checked' : ''} onchange="selectOption(${index})">
+                        <span class="option-label">${option}</span>
+                    </label>
                 `;
             });
 
             html += '</div>';
             container.innerHTML = html;
+
+            // Update progress
+            document.getElementById('progressLabel').textContent = `Question ${state.currentQuestion + 1} of ${softwareQuestions.length}`;
+            const progress = ((state.currentQuestion + 1) / softwareQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').style.display = state.currentQuestion > 0 ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = state.currentQuestion < softwareQuestions.length - 1 ? 'block' : 'none';
+            document.getElementById('submitPart1Btn').style.display = state.currentQuestion === softwareQuestions.length - 1 ? 'block' : 'none';
         }
 
-        /* ============================================
-           MODULE VIEWER
-           ============================================ */
-        function openModule(moduleId) {
-            currentModuleId = moduleId;
-            const mod = TRAINING_MODULES.find(m => m.id === moduleId);
-            if (!mod) return;
-            if (!TRAINING_PROGRESS[moduleId]) {
-                TRAINING_PROGRESS[moduleId] = { lessonsCompleted: [], quizScore: null, quizPassed: false };
+        function selectOption(index) {
+            state.softwareAnswers[state.currentQuestion] = index;
+            renderQuestion();
+        }
+
+        function nextQuestion() {
+            if (state.currentQuestion < softwareQuestions.length - 1) {
+                state.currentQuestion++;
+                renderQuestion();
             }
-            currentLessonIndex = 0;
-            moduleQuizState = { answers: [], currentQuestion: 0, submitted: false };
-            navigateTo('module-viewer');
-            renderModuleViewer();
         }
 
-        function renderModuleViewer() {
-            const mod = TRAINING_MODULES.find(m => m.id === currentModuleId);
-            if (!mod) return;
-            const progress = TRAINING_PROGRESS[mod.id];
-            const allLessonsDone = progress.lessonsCompleted.length >= mod.lessons.length;
-            const container = document.getElementById('module-viewer-content');
-
-            let sidebarHtml = `
-                <div class="lesson-sidebar">
-                    <div class="lesson-sidebar-header">
-                        <h3>${mod.title}</h3>
-                        <p>${progress.lessonsCompleted.length}/${mod.lessons.length} lessons completed</p>
-                    </div>
-            `;
-
-            mod.lessons.forEach((lesson, idx) => {
-                const isCompleted = progress.lessonsCompleted.includes(lesson.id);
-                const isActive = idx === currentLessonIndex && !moduleQuizState.submitted && moduleQuizState.currentQuestion === 0 && !allLessonsDone ? false : false;
-                sidebarHtml += `
-                    <div class="lesson-sidebar-item ${idx === currentLessonIndex && !showingQuiz() ? 'active' : ''} ${isCompleted ? 'completed' : ''}" onclick="goToLesson(${idx})">
-                        <div class="lesson-check">${isCompleted ? '&#10003;' : (idx + 1)}</div>
-                        <span>${lesson.title}</span>
-                    </div>
-                `;
-            });
-
-            // Quiz sidebar item
-            const quizStatus = progress.quizPassed ? 'completed' : (allLessonsDone ? '' : 'locked');
-            sidebarHtml += `
-                <div class="lesson-sidebar-item quiz-item ${showingQuiz() ? 'active' : ''} ${progress.quizPassed ? 'completed' : ''}" onclick="${allLessonsDone ? 'startModuleQuiz()' : ''}" style="${!allLessonsDone ? 'opacity:0.4;cursor:default;' : ''}">
-                    <div class="lesson-check">${progress.quizPassed ? '&#10003;' : '&#9733;'}</div>
-                    <span>Module Quiz ${!allLessonsDone ? '(complete all lessons)' : ''}</span>
-                </div>
-            `;
-            sidebarHtml += '</div>';
-
-            // Main content
-            let mainHtml = '<div class="lesson-content">';
-
-            if (showingQuiz()) {
-                mainHtml += renderModuleQuizContent(mod);
-            } else {
-                const lesson = mod.lessons[currentLessonIndex];
-                const isCompleted = progress.lessonsCompleted.includes(lesson.id);
-
-                mainHtml += `
-                    <div style="margin-bottom:8px;">
-                        <button class="btn btn-secondary btn-sm" onclick="navigateTo('training')" style="margin-bottom:12px;">&#8592; Back to Training Hub</button>
-                    </div>
-                    <div class="badge ${lesson.type === 'video' ? 'badge-blue' : 'badge-orange'}" style="margin-bottom:8px;">
-                        ${lesson.type === 'video' ? 'Video Lesson' : 'Reading'}
-                    </div>
-                    <h2>${lesson.title}</h2>
-                `;
-
-                if (lesson.type === 'video') {
-                    if (lesson.videoUrl) {
-                        mainHtml += `<iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-lg);margin-top:16px;border:none;max-width:700px;" src="${lesson.videoUrl}" allowfullscreen></iframe>`;
-                    } else {
-                        mainHtml += `
-                            <div class="video-placeholder" style="margin-top:16px;">
-                                <span>&#127909;</span>
-                                <div style="font-size:14px;font-weight:600;">Video: ${lesson.title}</div>
-                                <div style="font-size:12px;">Add a YouTube or Loom URL to display the video here</div>
-                            </div>
-                        `;
-                    }
-                }
-
-                mainHtml += `<div class="lesson-body">${lesson.content}</div>`;
-
-                mainHtml += `
-                    <div class="lesson-nav">
-                        <button class="btn btn-secondary" onclick="goToLesson(${currentLessonIndex - 1})" ${currentLessonIndex === 0 ? 'disabled style="opacity:0.4;"' : ''}>&#8592; Previous</button>
-                        <div style="display:flex;gap:8px;">
-                            ${!isCompleted ? `<button class="btn btn-primary" onclick="markLessonComplete('${lesson.id}')">&#10003; Mark Complete</button>` : '<span class="badge badge-green" style="padding:10px 16px;">Completed</span>'}
-                            ${currentLessonIndex < mod.lessons.length - 1
-                                ? `<button class="btn btn-secondary" onclick="goToLesson(${currentLessonIndex + 1})">Next &#8594;</button>`
-                                : (allLessonsDone && !progress.quizPassed
-                                    ? `<button class="btn btn-primary" onclick="startModuleQuiz()">Take Quiz &#8594;</button>`
-                                    : '')}
-                        </div>
-                    </div>
-                `;
+        function previousQuestion() {
+            if (state.currentQuestion > 0) {
+                state.currentQuestion--;
+                renderQuestion();
             }
-
-            mainHtml += '</div>';
-            container.innerHTML = `<div class="module-viewer">${sidebarHtml}${mainHtml}</div>`;
         }
 
-        function showingQuiz() {
-            return moduleQuizState.submitted || (moduleQuizState.currentQuestion > 0) || moduleQuizState._active;
-        }
+        // Render Scenario
+        function renderScenario() {
+            const s = scenarios[state.currentScenario];
+            const container = document.getElementById('scenarioContainer');
 
-        function goToLesson(idx) {
-            const mod = TRAINING_MODULES.find(m => m.id === currentModuleId);
-            if (idx < 0 || idx >= mod.lessons.length) return;
-            currentLessonIndex = idx;
-            moduleQuizState._active = false;
-            renderModuleViewer();
-        }
+            let html = `<div class="question-text">${s.scenario}</div><div class="options">`;
 
-        function markLessonComplete(lessonId) {
-            const progress = TRAINING_PROGRESS[currentModuleId];
-            if (!progress.lessonsCompleted.includes(lessonId)) {
-                progress.lessonsCompleted.push(lessonId);
-            }
-            renderModuleViewer();
-        }
-
-        /* ============================================
-           MODULE QUIZ ENGINE
-           ============================================ */
-        function startModuleQuiz() {
-            moduleQuizState = { answers: [], currentQuestion: 0, submitted: false, _active: true };
-            renderModuleViewer();
-        }
-
-        function renderModuleQuizContent(mod) {
-            const quiz = mod.quiz;
-            if (moduleQuizState.submitted) {
-                return renderModuleQuizResults(mod);
-            }
-
-            const q = quiz.questions[moduleQuizState.currentQuestion];
-            const total = quiz.questions.length;
-            const progress = ((moduleQuizState.currentQuestion + 1) / total) * 100;
-
-            let html = `
-                <div style="margin-bottom:8px;">
-                    <button class="btn btn-secondary btn-sm" onclick="navigateTo('training')" style="margin-bottom:12px;">&#8592; Back to Training Hub</button>
-                </div>
-                <div class="badge badge-orange" style="margin-bottom:8px;">Question ${moduleQuizState.currentQuestion + 1} of ${total}</div>
-                <h2>${mod.title} — Quiz</h2>
-                <div class="progress-bar-container" style="margin:16px 0 24px;max-width:700px;">
-                    <div class="progress-bar-fill" style="width:${progress}%"></div>
-                </div>
-                <div class="question-block" style="max-width:700px;">
-                    <div class="question-number">Question ${moduleQuizState.currentQuestion + 1} of ${total}</div>
-                    <div class="question-text">${q.text}</div>
-                    <div class="option-list">
-            `;
-
-            q.options.forEach((opt, idx) => {
-                const selected = moduleQuizState.answers[moduleQuizState.currentQuestion] === idx ? 'selected' : '';
+            s.options.forEach((option, index) => {
+                const isSelected = state.commsAnswers[state.currentScenario] === index;
+                const selectedClass = isSelected ? 'selected' : '';
                 html += `
-                    <div class="option-item ${selected}" onclick="selectModuleQuizOption(${idx})">
-                        <div class="option-radio"></div>
-                        <span>${opt}</span>
-                    </div>
+                    <label class="option ${selectedClass}">
+                        <input type="radio" name="scenario" value="${index}" ${isSelected ? 'checked' : ''} onchange="selectScenarioOption(${index})">
+                        <span class="option-label">${option}</span>
+                    </label>
                 `;
             });
 
-            html += `
-                    </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;margin-top:24px;max-width:700px;">
-                    <button class="btn btn-secondary" onclick="prevModuleQuizQ()" ${moduleQuizState.currentQuestion === 0 ? 'disabled style="opacity:0.4;"' : ''}>&#8592; Previous</button>
-                    ${moduleQuizState.currentQuestion === total - 1
-                        ? '<button class="btn btn-primary" onclick="submitModuleQuiz()">Submit Quiz</button>'
-                        : '<button class="btn btn-primary" onclick="nextModuleQuizQ()">Next &#8594;</button>'}
-                </div>
-            `;
-            return html;
+            html += '</div>';
+            container.innerHTML = html;
+
+            // Update progress
+            document.getElementById('progressLabel2').textContent = `Scenario ${state.currentScenario + 1} of ${scenarios.length}`;
+            const progress = ((state.currentScenario + 1) / scenarios.length) * 100;
+            document.getElementById('progressFill2').style.width = progress + '%';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn2').style.display = state.currentScenario > 0 ? 'block' : 'none';
+            document.getElementById('nextBtn2').style.display = state.currentScenario < scenarios.length - 1 ? 'block' : 'none';
+            document.getElementById('submitPart2Btn').style.display = state.currentScenario === scenarios.length - 1 ? 'block' : 'none';
         }
 
-        function selectModuleQuizOption(idx) {
-            moduleQuizState.answers[moduleQuizState.currentQuestion] = idx;
-            renderModuleViewer();
+        function selectScenarioOption(index) {
+            state.commsAnswers[state.currentScenario] = index;
+            renderScenario();
         }
 
-        function nextModuleQuizQ() {
-            const mod = TRAINING_MODULES.find(m => m.id === currentModuleId);
-            if (moduleQuizState.currentQuestion < mod.quiz.questions.length - 1) {
-                moduleQuizState.currentQuestion++;
-                renderModuleViewer();
+        function nextScenario() {
+            if (state.currentScenario < scenarios.length - 1) {
+                state.currentScenario++;
+                renderScenario();
             }
         }
 
-        function prevModuleQuizQ() {
-            if (moduleQuizState.currentQuestion > 0) {
-                moduleQuizState.currentQuestion--;
-                renderModuleViewer();
-            }
-         }
-            renderModuleViewer();
-        }
-
-        /* ============================================
-           MODULE QUIZ ENGINE
-           ============================================ */
-        function startModuleQuiz() {
-            moduleQuizState = { answers: [], currentQuestion: 0, submitted: false, _active: true };
-            renderModuleViewer();
-        }
-
-        function renderModuleQuizContent(mod) {
-            const quiz = mod.quiz;
-            if (moduleQuizState.submitted) {
-                return renderModuleQuizResults(mod);
-            }
-
-            const q = quiz.questions[moduleQuizState.currentQuestion];
-            const total = quiz.questions.length;
-            const progress = ((moduleQuizState.currentQuestion + 1) / total) * 100;
-
-            let html = `
-                <div style="margin-bottom:8px;">
-                    <button class="btn btn-secondary btn-sm" onclick="navigateTo('training')" style="margin-bottom:12px;">&#8592; Back to Training Hub</button>
-                </div>
-                <div class="badge badge-orange" style="margin-bottom:8px;">Question ${moduleQuizState.currentQuestion + 1} of ${total}</div>
-                <h2>${mod.title} — Quiz</h2>
-                <div class="progress-bar-container" style="margin:16px 0 24px;max-width:700px;">
-                    <div class="progress-bar-fill" style="width:${progress}%"></div>
-                </div>
-                <div class="question-block" style="max-width:700px;">
-                    <div class="question-number">Question ${moduleQuizState.currentQuestion + 1} of ${total}</div>
-                    <div class="question-text">${q.text}</div>
-                    <div class="option-list">
-            `;
-
-            q.options.forEach((opt, idx) => {
-                const selected = moduleQuizState.answers[moduleQuizState.currentQuestion] === idx ? 'selected' : '';
-                html += `
-                    <div class="option-item ${selected}" onclick="selectModuleQuizOption(${idx})">
-                        <div class="option-radio"></div>
-                        <span>${opt}</span>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;margin-top:24px;max-width:700px;">
-                    <button class="btn btn-secondary" onclick="prevModuleQuizQ()" ${moduleQuizState.currentQuestion === 0 ? 'disabled style="opacity:0.4;"' : ''}>&#8592; Previous</button>
-                    ${moduleQuizState.currentQuestion === total - 1
-                        ? '<button class="btn btn-primary" onclick="submitModuleQuiz()">Submit Quiz</button>'
-                        : '<button class="btn btn-primary" onclick="nextModuleQuizQ()">Next &#8594;</button>'}
-                </div>
-            `;
-            return html;
-        }
-
-        function selectModuleQuizOption(idx) {
-            moduleQuizState.answers[moduleQuizState.currentQuestion] = idx;
-            renderModuleViewer();
-        }
-
-        function nextModuleQuizQ() {
-            const mod = TRAINING_MODULES.find(m => m.id === currentModuleId);
-            if (moduleQuizState.currentQuestion < mod.quiz.questions.length - 1) {
-                moduleQuizState.currentQuestion++;
-                renderModuleViewer();
+        function previousScenario() {
+            if (state.currentScenario > 0) {
+                state.currentScenario--;
+                renderScenario();
             }
         }
 
-        function prevModuleQuizQ() {
-            if (moduleQuizState.currentQuestion > 0) {
-                moduleQuizState.currentQuestion--;
-                renderModuleViewer();
+        // Submission
+        function submitPart1() {
+            state.modalTitle = 'Submit Part 1?';
+            state.modalMessage = 'Are you sure you want to submit Part 1? You cannot go back to change your answers.';
+            state.pendingSubmission = 'part1';
+            showModal();
+        }
+
+        function submitPart2() {
+            state.modalTitle = 'Submit Assessment?';
+            state.modalMessage = 'Are you sure you want to submit your entire assessment? Your responses will be final.';
+            state.pendingSubmission = 'part2';
+            showModal();
+        }
+
+        function showModal() {
+            document.getElementById('modalTitle').textContent = state.modalTitle;
+            document.getElementById('modalMessage').textContent = state.modalMessage;
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+
+        function confirmSubmit() {
+            closeModal();
+
+            if (state.pendingSubmission === 'part1') {
+                clearInterval(state.timerInterval);
+                state.part1Submitted = true;
+                goToStep(3);
+            } else if (state.pendingSubmission === 'part2') {
+                state.part2Submitted = true;
+                submitResults();
+                goToStep(5);
             }
         }
 
-        function submitModuleQuiz() {
-            const mod = TRAINING_MODULES.find(m => m.id === currentModuleId);
-            const quiz = mod.quiz;
+        function submitResults() {
+            // Calculate scores
+            const softwareScore = calculateSoftwareScore();
+            const commsScore = calculateCommsScore();
+            const compositeScore = Math.round((softwareScore + commsScore) / 2);
+
+            const results = {
+                token: state.token,
+                candidateName: state.candidateName,
+                softwareAnswers: state.softwareAnswers,
+                commsAnswers: state.commsAnswers,
+                softwareScore: softwareScore,
+                commsScore: commsScore,
+                compositeScore: compositeScore,
+                timestamp: new Date().toISOString()
+            };
+
+            if (DEMO_MODE) {
+                console.log('ASSESSMENT RESULTS:', results);
+            }
+
+            if (BACKEND_URL) {
+                fetch(BACKEND_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(results)
+                }).catch(err => console.error('Submission error:', err));
+            }
+        }
+
+        function calculateSoftwareScore() {
             let correct = 0;
-            quiz.questions.forEach((q, idx) => {
-                if (moduleQuizState.answers[idx] === q.correct) correct++;
+            state.softwareAnswers.forEach((answer, index) => {
+                if (answer === softwareQuestions[index].correct) {
+                    correct++;
+                }
             });
-            const score = Math.round((correct / quiz.questions.length) * 100);
-            const passed = score >= quiz.passingScore;
-
-            TRAINING_PROGRESS[currentModuleId].quizScore = score;
-            TRAINING_PROGRESS[currentModuleId].quizPassed = passed;
-
-            moduleQuizState.submitted = true;
-            moduleQuizState.score = score;
-            moduleQuizState.passed = passed;
-            moduleQuizState.correct = correct;
-            renderModuleViewer();
+            return Math.round((correct / softwareQuestions.length) * 100);
         }
 
-        function renderModuleQuizResults(mod) {
-            const { score, passed, correct, answers } = moduleQuizState;
-            const quiz = mod.quiz;
-
-            let html = `
-                <div style="margin-bottom:8px;">
-                    <button class="btn btn-secondary btn-sm" onclick="navigateTo('training')" style="margin-bottom:12px;">&#8592; Back to Training Hub</button>
-                </div>
-                <div style="text-align:center;padding:24px 0;">
-                    <div class="score-ring" style="--score-pct:${score}%;margin:0 auto;">
-                        <div class="score-ring-inner">
-                            <div class="score-value">${score}</div>
-                            <div class="score-label">Score</div>
-                        </div>
-                    </div>
-                    <div style="margin-top:16px;font-size:20px;font-weight:700;font-family:var(--font-heading);color:${passed ? 'var(--green-success)' : 'var(--red-danger)'};">
-                        ${passed ? 'Quiz Passed!' : 'Quiz Not Passed'}
-                    </div>
-                    <div style="color:var(--text-muted);margin-top:6px;">
-                        ${correct} of ${quiz.questions.length} correct &bull; ${quiz.passingScore}% needed to pass
-                    </div>
-                </div>
-            `;
-
-            // Show answer review
-            html += '<div style="max-width:700px;margin:0 auto;">';
-            quiz.questions.forEach((q, idx) => {
-                const selectedIdx = answers[idx];
-                const isCorrect = selectedIdx === q.correct;
-                html += `
-                    <div class="question-block" style="border-left:3px solid ${isCorrect ? 'var(--green-success)' : 'var(--red-danger)'};">
-                        <div style="font-size:12px;font-weight:700;color:${isCorrect ? 'var(--green-success)' : 'var(--red-danger)'};">
-                            ${isCorrect ? '&#10003; Correct' : '&#10007; Incorrect'}
-                        </div>
-                        <div class="question-text" style="font-size:14px;">${q.text}</div>
-                        <div style="font-size:13px;color:var(--text-muted);">Your answer: ${q.options[selectedIdx] || 'No answer'}</div>
-                        ${!isCorrect ? `<div style="font-size:13px;color:var(--green-success);margin-top:4px;">Correct: ${q.options[q.correct]}</div>` : ''}
-                    </div>
-                `;
+        function calculateCommsScore() {
+            let totalScore = 0;
+            state.commsAnswers.forEach((answer, index) => {
+                if (answer >= 0) {
+                    totalScore += scenarios[index].scores[answer];
+                }
             });
-
-            html += `
-                <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;">
-                    ${passed
-                        ? '<button class="btn btn-primary" onclick="navigateTo(\'training\')">Continue Training</button>'
-                        : '<button class="btn btn-primary" onclick="startModuleQuiz()">Retake Quiz</button>'}
-                    <button class="btn btn-secondary" onclick="navigateTo('training')">Back to Hub</button>
-                </div>
-            </div>`;
-
-            return html;
+            return Math.round((totalScore / (scenarios.length * 10)) * 100);
         }
 
-        /* ============================
+        // Modal close on background click
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('confirmModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
